@@ -123,10 +123,10 @@ const Navigation = () => {
           )}
         </button>
 
-        {dropdownOpen && userInfo && (
+        {dropdownOpen && userInfo && (     
           <ul
             className={`absolute right-0 mt-12 mr-11 rounded-lg  space-y-3 text-center py-2 bg-zinc-800 text-gray-200 
-            ${!userInfo.isAdmin ? "-top-20 -mt-2" : "-top-80"}
+            ${!userInfo.isAdmin ? "-top-20 -mt-4" : "-top-80"}
             `}
           >
             {userInfo.isAdmin && (
@@ -176,7 +176,7 @@ const Navigation = () => {
             )}
             <li>
                   <Link
-                    to="/admin/profile"
+                    to="/profile"
                     className="black px-4 py-2 hover:bg-gray-400  rounded-md"
                   >
                     Profile
@@ -185,7 +185,7 @@ const Navigation = () => {
                 <li>
                   <Link
                   onClick={logoutHandler}
-                    to="/admin/logout"
+                    to="/logout"
                     className="black px-4 py-2 hover:bg-gray-400 rounded-md"
                   >
                     Logout

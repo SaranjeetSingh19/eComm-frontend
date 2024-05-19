@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useLoginMutation } from "../../api/usersApiSlice";
 
 const initialState = {
   userInfo: localStorage.getItem("userInfo")

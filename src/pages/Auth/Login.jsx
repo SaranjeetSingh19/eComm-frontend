@@ -31,13 +31,12 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-        const res = await login({email, password}).unwrap()
-        console.log(res);
-        dispatch(setCredentials({...res}))
+      const res = await login({ email, password }).unwrap();
+      console.log(res);
+      dispatch(setCredentials({ ...res }));
+      toast.success(`Welcome Back ${res.username} 😎`);
     } catch (error) {
-      toast.error(
-        error?.data?.message || error?.message || "Something went wrong"
-      );
+      toast.error(error?.data?.message || "Something went wrong");
     }
   };
 
