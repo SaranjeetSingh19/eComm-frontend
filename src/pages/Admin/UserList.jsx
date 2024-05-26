@@ -10,6 +10,7 @@ import Loader from "../../components/Loader";
 
 const UserList = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
+  
   const [deleteUser] = useDeletedUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
@@ -17,9 +18,7 @@ const UserList = () => {
   const [editableUsername, setEditableUsername] = useState("");
   const [editableUserEmail, setEditableUserEmail] = useState("");
 
-  useEffect(() => {
-    refetch();
-  }, [refetch]);
+
 
   const deleteHandler = async (id) => {
     try {

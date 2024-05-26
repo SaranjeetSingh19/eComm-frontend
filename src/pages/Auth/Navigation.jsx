@@ -15,7 +15,6 @@ import "./Navigation.css";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
-  console.log("User info value :=", userInfo);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
