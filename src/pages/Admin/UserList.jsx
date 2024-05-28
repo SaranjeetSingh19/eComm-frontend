@@ -7,6 +7,7 @@ import {
 } from "../../redux/api/usersApiSlice";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
+import AdminMenu from "./AdminMenu";
 
 const UserList = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
@@ -51,7 +52,7 @@ const UserList = () => {
 
   return (
     <div className="p-4 pl-16 text-white">
-      <h1 className="font-semibold text-2xl mb-4">Users</h1>
+      {/* <h1 className="font-semibold text-2xl mb-4">Users</h1> */}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -60,7 +61,7 @@ const UserList = () => {
         </Message>
       ) : (
         <div className="flex flex-col md:flex-row">
-          {/* Admin menu */}
+          <AdminMenu />
           <table className="w-full md:4/5 mx-auto">
             <thead>
               <tr>
