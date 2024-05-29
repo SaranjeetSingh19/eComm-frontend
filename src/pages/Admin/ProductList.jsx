@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   useCreateProductMutation,
@@ -23,34 +23,38 @@ const ProductList = () => {
 
   const [uploadProductImage] = useUploadProductImageMutation();
   const [createProduct] = useCreateProductMutation();
-  const { data: categories } = useFetchCategoriesQuery();
+  const { data: categories, refetch } = useFetchCategoriesQuery();
+
+  useEffect(() => {refetch()}, [refetch])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+  
     try {
       const productData = new FormData();
-
       productData.append("image", image);
-      productData.append("brand", brand);
-      productData.append("price", price);
+      productData.append("name", name);
       productData.append("description", description);
+      productData.append("price", price);
       productData.append("category", category);
       productData.append("quantity", quantity);
-      productData.append("name", name);
+      productData.append("brand", brand);
       productData.append("countInStock", stock);
 
       const { data } = await createProduct(productData);
+      console.log("Data is =" ,data);
 
-      if (data.error) {
-        toast.error("Product creation failed. Try again");
+      if (data?.error) {
+        console.log(data?.error);
+        toast.error("Product creation failed. Try again 1");
       } else {
-        toast.success(`${data.name} is created`);
+        toast.success(`${data?.name} is created`);
         navigate("/admin/allproductslist");
       }
     } catch (error) {
       console.log(error);
-      toast.error("Product creation failed. Try again");
+      toast.error("Product creation failed. Try again 2");
     }
   };
 
@@ -60,9 +64,9 @@ const ProductList = () => {
 
     try {
       const res = await uploadProductImage(formData).unwrap();
-      toast.success(res.message);
-      setImage(res.image);
-      setImageUrl(res.image);
+      toast.success(res?.message);
+      setImage(res?.image);
+      setImageUrl(res?.image);
     } catch (error) {
       console.log(error);
       toast.error(error?.data?.message || error?.error);
@@ -70,7 +74,7 @@ const ProductList = () => {
   };
 
   return (
-    <div className="container xl:mx-[9rem] sm:mx-[0] ">
+    <div className="container xl:mx-[9rem] sm:mx-[0]">
       <div className="flex flex-col md:flex-row">
         <AdminMenu />
         <div className="md:w-3/4  p-3">

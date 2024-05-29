@@ -13,7 +13,12 @@ import {toast} from "react-toastify"
 const ProductUpdate = () => {
   const params = useParams();
 
-  const { data: productData } = useGetProductByIdQuery(params._id);
+  const { data: productData, refetch } = useGetProductByIdQuery(params._id);
+
+  useEffect(() => {
+    refetch()
+  } , [refetch])
+
 
   const [image, setImage] = useState(productData?.image || "");
   const [name, setName] = useState(productData?.name || "");
@@ -41,7 +46,8 @@ const ProductUpdate = () => {
       setCategory(productData.categories?._id);
       setQuantity(productData.quantity);
       setBrand(productData.brand);
-      setImage(productData.image);
+      setImage(productData.image); 
+      setStock(productData.countInStock);
     }
   }, [productData]);
 
@@ -51,6 +57,7 @@ const ProductUpdate = () => {
     try {
       const formData = new FormData();
 
+      formData.append("countInStock", stock);
       formData.append("image", image);
       formData.append("brand", brand);
       formData.append("price", price);
@@ -58,7 +65,6 @@ const ProductUpdate = () => {
       formData.append("category", category);
       formData.append("quantity", quantity);
       formData.append("name", name);
-      formData.append("countInStock", stock);
 
       const { data } = await updateProduct({ productId: params._id, formData });
 
@@ -108,7 +114,7 @@ const ProductUpdate = () => {
       <div className="flex flex-col md:flex-row">
         <AdminMenu />
         <div className="md:w-3/4  p-3">
-          <div className="h-12 text-white">Create Product</div>
+          <div className="h-12 text-white">Update Product</div>
           {image && (
             <div className="text-center">
               <img
@@ -201,12 +207,12 @@ const ProductUpdate = () => {
               <div>
                 <label htmlFor="name block" className="text-red-400">
                   Count In Stock
-                </label>{" "}
+                </label>
                 <br />
                 <input
+                  value={stock}
                   type="text"
                   className="p-4 mb-3 w-[25rem] border rounded-lg bg-pink-400 text-white"
-                  value={stock}
                   onChange={(e) => setStock(e.target.value)}
                 />
               </div>
@@ -217,6 +223,7 @@ const ProductUpdate = () => {
                 </label>{" "}
                 <br />
                 <select
+                
                   placeholder="Choose category"
                   className="p-4 mb-3 w-[25rem] border rounded-lg bg-orange-400 text-white"
                   onChange={(e) => setCategory(e.target.value)}

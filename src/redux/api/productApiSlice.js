@@ -20,8 +20,9 @@ export const productApiSlice = apiSlice.injectEndpoints({
     }),
 
     allProducts: builder.query({
-      query: () => `${PRODUCT_URL}/allproducts`, //If Error: change allproducts to allProducts
+      query: () => `${PRODUCT_URL}/allProducts`,
     }),
+    //If Error: change allproducts to allProducts
 
     getProductDetails: builder.query({
       query: (productId) => ({
