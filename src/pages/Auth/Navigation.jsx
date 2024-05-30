@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
 import "./Navigation.css";
+import FavouriteCount from "../Products/FavouriteCount";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -60,8 +61,11 @@ const Navigation = () => {
           className="flex items-center transition-transform
         transform hover:translate-x-2"
         >
+          <div className="flex justify-center items-center 
+          transition-transform transform hover:translate-x-2">
           <AiOutlineHome className="mr-2 mt-[3rem]" size={26} />
           <span className="hidden nav-item-name mt-[3rem]">HOME </span>{" "}
+          </div>
         </Link>
 
         <Link
@@ -69,8 +73,11 @@ const Navigation = () => {
           className="flex items-center transition-transform
         transform hover:translate-x-2"
         >
+          <div className="flex justify-center items-center 
+          transition-transform transform hover:translate-x-2">
           <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
           <span className="  nav-item-name mt-[3rem]">SHOP</span>{" "}
+          </div>
         </Link>
 
         <Link
@@ -78,8 +85,11 @@ const Navigation = () => {
           className="flex items-center transition-transform
         transform hover:translate-x-2"
         >
+          <div className="flex justify-center items-center 
+          transition-transform transform hover:translate-x-2">
           <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={26} />
           <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
+          </div>
         </Link>
 
         <Link
@@ -87,8 +97,14 @@ const Navigation = () => {
           className="flex items-center transition-transform
         transform hover:translate-x-2"
         >
-          <FaHeart className="mr-2 mt-[3rem]" size={26} />
-          <span className="hidden nav-item-name mt-[3rem]">Favourite</span>{" "}
+          <div className="flex justify-center items-center 
+          transition-transform transform hover:translate-x-2">
+            <FaHeart className="mr-2 mt-[3rem]" size={26} />
+            <span className="hidden nav-item-name mt-[3rem]">
+              Favourite
+            </span>{" "}
+            <FavouriteCount />
+          </div>
         </Link>
       </div>
 
@@ -122,7 +138,7 @@ const Navigation = () => {
           )}
         </button>
 
-        {dropdownOpen && userInfo && (     
+        {dropdownOpen && userInfo && (
           <ul
             className={`absolute right-0 mt-12 mr-11 rounded-lg  space-y-3 text-center py-2 bg-zinc-800 text-gray-200 
             ${!userInfo.isAdmin ? "-top-20 -mt-4" : "-top-80"}
@@ -149,7 +165,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/categorylist"
-                    className="black px-4 py-2 hover:bg-gray-400 rounded-md" 
+                    className="black px-4 py-2 hover:bg-gray-400 rounded-md"
                   >
                     Category
                   </Link>
@@ -170,26 +186,25 @@ const Navigation = () => {
                     Users
                   </Link>
                 </li>
-                
               </>
             )}
             <li>
-                  <Link
-                    to="/profile"
-                    className="black px-4 py-2 hover:bg-gray-400  rounded-md"
-                  >
-                    Profile
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                  onClick={logoutHandler}
-                    to="/logout"
-                    className="black px-4 py-2 hover:bg-gray-400 rounded-md"
-                  >
-                    Logout
-                  </Link>
-                </li>
+              <Link
+                to="/profile"
+                className="black px-4 py-2 hover:bg-gray-400  rounded-md"
+              >
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={logoutHandler}
+                to="/logout"
+                className="black px-4 py-2 hover:bg-gray-400 rounded-md"
+              >
+                Logout
+              </Link>
+            </li>
           </ul>
         )}
       </div>
@@ -223,6 +238,7 @@ const Navigation = () => {
       )}
     </div>
   );
+
 };
 
 export default Navigation;

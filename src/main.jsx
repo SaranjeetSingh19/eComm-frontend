@@ -21,17 +21,21 @@ import ProductList from "./pages/Admin/ProductList.jsx";
 import ProductUpdate from "./pages/Admin/ProductUpdate.jsx";
 import AllProducts from "./pages/Admin/AllProducts.jsx";
 import Home from "./Home.jsx";
+import Favourites from "./pages/Products/Favourites.jsx";
+import ProductDetails from "./pages/Products/ProductDetails.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/favourite" element={<Favourites />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
       <Route index={true} path="/" element={<Home />} />
 
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />} />
-      </Route> 
+      </Route>
 
       {/* Admin routes 👇🏻 */}
       <Route path="/admin" element={<AdminRoute />}>

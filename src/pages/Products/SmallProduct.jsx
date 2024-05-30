@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import HeartIcon from "./HeartIcon";
 
 const SmallProduct = ({ product }) => {
   return (
@@ -10,7 +11,7 @@ const SmallProduct = ({ product }) => {
           alt={product.name}
           className="rounded h-40 w-40"
         />
-        {/* HeartIcon  */}
+        <HeartIcon product={product}/> 
 
         <div className="p-54">
           <Link to={`/product/${product._id}`}>

@@ -98,9 +98,8 @@ const CategoryList = () => {
     refetch();
   }, [refetch]);
 
-
   return (
-    <div className="ml-[10rem] flex flex-col md:flex-row">
+    <div className="ml-4 sm:ml-[10rem] flex flex-col md:flex-row">
       <AdminMenu />
       <div className="md:w-3/4 p-3">
         <div className="h-12 text-white">Manage Categories</div>
@@ -111,12 +110,12 @@ const CategoryList = () => {
         />
         <br />
         <hr />
-
+  
         <div className="flex flex-wrap">
           {categories?.map((category, i) => (
-            <div key={i}>
+            <div key={i} className="w-full sm:w-auto">
               <button
-                className="bg-pink-400 text-white py-2 px-4 mr-2 rounded-lg
+                className="bg-pink-400 text-white py-2 px-4 mr-2 mb-2 rounded-lg
            hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
                 onClick={() => {
                   {
@@ -131,7 +130,7 @@ const CategoryList = () => {
             </div>
           ))}
         </div>
-
+  
         <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>
           <CategoryForm
             value={updatingName}
@@ -144,6 +143,7 @@ const CategoryList = () => {
       </div>
     </div>
   );
+  
 };
 
 export default CategoryList;
