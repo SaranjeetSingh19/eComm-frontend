@@ -1,10 +1,5 @@
+import moment from "moment";
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router";
-import {
-  useCreateReviewMutation,
-  useGetProductDetailsQuery,
-} from "../../redux/api/productApiSlice";
-import { Link } from "react-router-dom";
 import {
   FaBox,
   FaClock,
@@ -12,19 +7,26 @@ import {
   FaStar,
   FaStore,
 } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
+import {
+  useCreateReviewMutation,
+  useGetProductDetailsQuery,
+} from "../../redux/api/productApiSlice";
+import { addToCart } from "../../redux/features/cart/cartSlice";
 import HeartIcon from "./HeartIcon";
-import moment from "moment";
-import Rating from "./Rating";
 import ProductTabs from "./ProductTabs";
-import { useSelector } from "react-redux";
-
+import Rating from "./Rating";
 
 const ProductDetails = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const { id: productId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -40,9 +42,27 @@ const ProductDetails = () => {
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
 
-    const submitHandler = () => {
-        
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      await createReview({
+        productId,
+        rating,
+        comment,
+      }).unwrap();
+      refetch();
+      toast.success("Review Added Successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.data || error?.message);
     }
+  };
+
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, qty }));
+    navigate("/cart")
+  };
 
   return (
     <>
@@ -138,7 +158,7 @@ const ProductDetails = () => {
 
               <div className="btn-container">
                 <button
-                  // onClick={addToCartHandler}
+                  onClick={addToCartHandler}
                   className="bg-pink-700 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
                 >
                   Add To Cart
