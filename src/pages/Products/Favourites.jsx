@@ -4,8 +4,7 @@ import Product from "./Product";
 
 const Favourites = () => {
   const favourites = useSelector((state) => state.favourites);
-  console.log(favourites);
-  //   const favourites = useSelector(selectFavouriteProduct)
+  
   return (
     <div className="ml-4 sm:ml-[10rem]">
       <h1 className="text-lg text-white font-bold ml-[3rem] mt-[3rem]">
