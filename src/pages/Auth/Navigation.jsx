@@ -139,7 +139,7 @@ const Navigation = () => {
           transition-transform transform hover:translate-x-2"
           >
             <FaRobot className="mr-2 mt-[3rem]" size={26} />
-            <span className="hidden nav-item-name mt-[3rem]">Home </span>{" "}
+            <span className="hidden nav-item-name mt-[3rem]">GPT</span>{" "}
           </div>
         </Link>
       </div>
