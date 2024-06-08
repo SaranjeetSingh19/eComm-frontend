@@ -3,5 +3,16 @@
 @tailwind utilities;
 
 body{
-    background-color: rgb(21, 21, 21);
+    background-color: #E0E6EC;
+    font-family: 'Chillax Semibold', sans-serif;
 }
+/* 
+.slick-prev:before, .slick-next:before {
+  font-family: 'slick';
+  font-size: 20px;
+  line-height: 1;
+  opacity: .75;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */

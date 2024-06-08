@@ -1,16 +1,21 @@
 import axios from "axios";
 import { useState } from "react";
+import { FaPaperPlane } from "react-icons/fa";
 
 const GptPage = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
-  const query = "Act as an Ecommerce suggestor, so people could ask suggestions from you about products, keep your answer in between 40 words or maximum 60 words. " + question
+  const query =
+    "Act as an Ecommerce suggestor, so people could ask suggestions from you about products, keep your answer in between 40 words or maximum 60 words. " +
+    question;
 
   async function generateAns() {
     setAnswer("Loading...");
     const response = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyAOSbkVGDa4GAKdnSwM7qIwbuDPA7mtFKw",
+      url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${
+        import.meta.env.VITE_GEMINI_KEY
+      }`,
       method: "post",
       data: { contents: [{ parts: [{ text: query }] }] },
     });
@@ -19,19 +24,25 @@ const GptPage = () => {
   }
 
   return (
-    <div className="p-32">
-      <h1 className="text-white">Your AI</h1>
-      <input 
-      className="w-96"
-        value={question}
-        onChange={(e) => setQuestion(e.target.value)}
+    <div className="px-32 text-center w-full h-[32rem] flex flex-col items-center justify-between">
+      <h1 className="text-black text-6xl">Your AI</h1>
 
-     / > 
-     <br />
-      <button className="text-xl rounded-full px-6 py-2 text-white bg-teal-900" onClick={generateAns}>
-        Get answer
-      </button>
-      <pre className="text-black bg-red-300 p-12"> {answer}</pre>
+      {answer ?<p className="text-black w-[50rem] text-lg bg-blue-100 bg-gradient-to-r from-blue-100 to-rose-200 rounded-lg p-8 mt-4">{answer}</p> : ""}
+
+      <div className="flex items-center mt-[4rem]">
+        <input
+          className="px-5 py-2 border-none outline-none rounded-2xl w-[45rem]"
+          value={question}
+          placeholder="Ask anything..."
+          onChange={(e) => setQuestion(e.target.value)}
+        />
+        <button
+          className="text-xl rounded-full px-2.5 py-2.5 ml-2 text-white bg-black"
+          onClick={generateAns}
+        >
+          <FaPaperPlane />
+        </button>
+      </div>
     </div>
   );
 };

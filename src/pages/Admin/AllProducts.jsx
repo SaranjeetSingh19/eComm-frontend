@@ -8,8 +8,8 @@ const AllProducts = () => {
   const { data: products, isLoading, isError, refetch } = useAllProductsQuery();
 
   useEffect(() => {
-    refetch()
-  } , [refetch])
+    refetch();
+  }, [refetch]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -21,11 +21,14 @@ const AllProducts = () => {
 
   return (
     <>
-      <div className="container mx-[9rem] text-white">
+      <div className="container text-black">
         <div className="flex flex-col  md:flex-row">
           <div className="p-3">
-            <div className="ml-[2rem] text-xl font-bold h-12">
-              All Products ({products.length})
+            <div className="pl-[7rem] text-3xl font-bold h-12">
+              <h2 className="border-b-2 border-black">
+                {" "}
+                All Products ({products.length})
+              </h2>
             </div>
             <div className="flex flex-wrap justify-around items-center">
               {products.map((product) => (

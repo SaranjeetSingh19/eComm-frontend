@@ -26,15 +26,15 @@ const Cart = () => {
 
   return (
     <>
-      <div className="container flex justify-around item-start text-white wrap mx-auto mt-8">
+      <div className="container flex justify-around item-start text-black wrap mx-auto mt-8">
         {cartItems.length === 0 ? (
-          <div>
+          <div className="text-3xl">
             Your cart is empty! <Link to="/shop">Go shop</Link>
           </div>
         ) : (
           <>
-            <div className="flex flex-col w-[80%] text-white">
-              <h1 className="mb-4 font-semibold text-2xl">Shopping Cart</h1>
+            <div className="flex flex-col w-[80%] text-black">
+              <h1 className="mb-4 font-semibold text-5xl border-b-2 border-black">Cart.</h1>
 
               {cartItems.map((item) => (
                 <div
@@ -49,11 +49,11 @@ const Cart = () => {
                     />
                   </div>
                   <div className="flex-1 ml-4">
-                    <Link to={`/product/${item._id}`} className="text-pink-500">
+                    <Link to={`/product/${item._id}`} className="text-teal-600">
                       {item.name}
                     </Link>
-                    <div className="mt-2 text-white">{item.brand}</div>
-                    <div className="mt-2 text-white font-bold">
+                    <div className="mt-2 text-black">{item.brand}</div>
+                    <div className="mt-2 text-black font-bold">
                       ₹ {item.price}
                     </div>
                   </div>
@@ -79,7 +79,7 @@ const Cart = () => {
                       className="text-red-500 mr-[5rem]"
                       onClick={() => removeFromCartHandler(item._id)}
                     >
-                      <FaTrash className="ml-[1rem] mt-[.5rem] cursor-pointer" />
+                      <FaTrash className="hover:text-black text-rose-40000 ml-[1rem] mt-[.5rem] cursor-pointer" />
                     </button>
                   </div>
                 </div>
@@ -91,8 +91,8 @@ const Cart = () => {
                     Items ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                   </h2>
 
-                  <div className="text-2xl font-bold">
-                    ₹{" "}
+                  <div className="text-xl font-bold text-green-400">
+                    <span className="text-black">Total Amount</span>  ₹{" "}
                     {cartItems
                       .reduce((acc, item) => acc + item.qty * item.price, 0)
                       .toFixed(2)}
@@ -100,8 +100,8 @@ const Cart = () => {
                   <button 
                   disabled={cartItems.length === 0}
                   onClick={checkoutHandler}
-                  className="rounded-full bg-teal-500 mt-4 py-2 px-4 text-lg w-full">
-                    Proceed To Checkout 
+                  className="rounded-full bg-black text-white mt-4 py-2 px-4 text-lg w-full">
+                   Place Order
                   </button>
                 </div>
               </div>

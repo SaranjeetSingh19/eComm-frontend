@@ -50,49 +50,54 @@ const Register = () => {
   };
 
   return (
-    <section className="pl-[10rem] flex flex-wrap">
-      <div className="mr-[4rem] mt-[5rem]">
-        <h1 className="text-white text-3xl font-semibold mb-4">Register</h1>
-        <form onSubmit={submitHandler} className="container w-[40rem]">
-          <div className="my-[2rem]">
-            <label
+    <section className="pl-[10rem] flex flex-wrap justify-center">
+      <div className="mr-[4rem] mt-[2rem]">
+        <h1 className="text-black text-4xl font-semibold mb-2">
+        welcome to <span className="text-rose-500">Shifsy</span> <br /> <span className="text-2xl">create your account</span>
+        </h1>
+        <form onSubmit={submitHandler} className="container w-[30rem]">
+          <div className="my-[1.5rem]">
+            {/* <label
               htmlFor="name"
               className="black ml-2 text-sm font-medium text-white"
             >
               Name
-            </label>
+            </label> */}
             <input
               type="text"
               id="name"
               value={username}
+              placeholder="Name"
               onChange={(e) => setUsername(e.target.value)}
               className="mt-1 p-2 border-none outline-none rounded-2xl w-full"
             />
           </div>
           <div className="my-[2rem]">
-            <label
+            {/* <label
               htmlFor="email"
               className="black ml-2 text-sm font-medium text-white"
             >
               Email
-            </label>
+            </label> */}
             <input
               type="email"
               id="email"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-1 p-2 border-none outline-none rounded-2xl w-full"
             />
           </div>
           <div className="my-[2rem]">
-            <label
+            {/* <label
               htmlFor="password"
               className="black ml-2 text-sm font-medium text-white"
             >
               Password
-            </label>
+            </label> */}
             <input
               type="password"
+              placeholder="Password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -100,14 +105,15 @@ const Register = () => {
             />
           </div>
           <div className="my-[2rem]">
-            <label
+            {/* <label
               htmlFor="confirmPassword"
               className="black ml-2 text-sm font-medium text-white"
             >
               Confirm Password
-            </label>
+            </label> */}
             <input
               type="password"
+              placeholder="Confirm password"
               id="confirmPassword"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
@@ -117,19 +123,19 @@ const Register = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-pink-400 px-4 text-white py-2 rounded cursor-pointer my-[1rem]"
+            className="bg-blue-500 px-4 text-white py-2 rounded-full cursor-pointer"
           >
-            {isLoading ? "Registering..." : "Register"}
+            {isLoading ? "Creating..." : "Create My Account"}
           </button>
           {isLoading && <Loader />}
         </form>
 
         <div className="mt-4">
-          <div className="text-white">
+          <div className="text-black">
             Already have an account?{" "}
             <Link
               to={redirect ? `/login?redirect=${redirect}` : `/login`}
-              className="text-pink-400 hover:underline"
+              className="text-rose-400 hover:text-rose-600"
             >
               Login
             </Link>

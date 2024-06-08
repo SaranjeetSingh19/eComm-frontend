@@ -20,19 +20,19 @@ const Home = () => {
       ) : (
         <>
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <h1 className="ml-4 sm:ml-[20rem] mt-4 sm:mt-[10rem] text-white text-[3rem]">
+            <h1 className="ml-4 sm:ml-[20rem] mt-4 sm:mt-[10rem] text-rose-500 text-[3rem]">
               Special Products
             </h1>
             <Link
               to="/shop"
-              className="bg-pink-500 text-white font-bold rounded-full py-2 px-10 mr-4 sm:mr-[18rem] mt-4 sm:mt-[10rem]"
+              className="bg-black text-white font-bold rounded-full py-2 px-10 mr-4 sm:mr-[18rem] mt-4 sm:mt-[10rem]"
             >Shop</Link> 
           </div>
           <div>
-            <div className="px-4 sm:px-20 flex justify-center sm:justify-between flex-wrap mt-[2rem] text-white">
+            <div className="px-4 sm:px-20 flex flex-wrap justify-center sm:justify-between mt-[2rem] text-white">
                 {
                     data.products.map((product) => (
-                        <div key={product._id}>
+                        <div key={product._id} className="w-full sm:w-auto">
                             <Product product={product}/>
                         </div> 
                     ))
@@ -43,7 +43,6 @@ const Home = () => {
       )}
     </>
   );
-  
 }
 
 export default Home;

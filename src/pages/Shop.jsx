@@ -79,12 +79,13 @@ const Shop = () => {
   return (
     <>
       <div className="container mx-auto pl-16 ">
+        <h1 className="text-[3.5rem] border-b-2 border-black">Shop.</h1>
         <div className="flex md:flex-row">
-          <div className="p-3 bg-zinc-700 h-max mt-2 mb-2">
-            <h2 className="text-white py-2 text-center mb-2 rounded-full bg-slate-800">
+          <div className="p-3 h-max mt-2 mb-2">
+            <h2 className="text-white py-2 text-center mb-2 rounded-full bg-rose-400">
               Filtered By Categories
             </h2>
-            <div className="p-5 w-[15rem]">
+            <div className="p-5 w-[15rem] ">
               {categories?.map((c) => (
                 <div key={c._id} className="mb-2">
                   <div className="flex mr-4 items-center">
@@ -92,14 +93,14 @@ const Shop = () => {
                       type="checkbox"
                       id="red-checkbox"
                       onChange={(e) => handleCheck(e.target.checked, c._id)}
-                      className="w-4 h-4 text-pink-600 bg-gray-100 border-gray-300\
-                       rounded focus:ring-pink-500 dark:focus:ring-pink-600
+                      className="w-4 h-4 text-green-400 bg-gray-100 border-gray-300
+                       rounded focus:ring-blue-700 dark:focus:ring-blue-600
                         dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700
                          dark:border-gray-600"
                     />
                     <label
                       htmlFor="pink-checkbox"
-                      className="ml-2 text-sm font-medium text-white dark:text-gray-300"
+                      className="ml-2 text-sm font-medium text-black dark:text-gray-300"
                     >
                       {c.name}
                     </label>
@@ -107,7 +108,7 @@ const Shop = () => {
                 </div>
               ))}
             </div>
-            <h2 className="py-2 text-center bg-black text-white rounded-full mb-2">
+            <h2 className="py-2 text-center bg-rose-400 text-white rounded-full mb-2">
               Filter by Brands
             </h2>
 
@@ -120,13 +121,13 @@ const Shop = () => {
                       id={brand}
                       name="brand"
                       onChange={() => handleBrandClick(brand)}
-                      className="w-4 h-4 text-pink-400 bg-gray-100 border-gray-300
-                       focus:ring-pink-500 dark:focus:ring-pink-600 dark:ring-offset-gray-800
+                      className="w-4 h-4 text-green-400 bg-gray-100 border-gray-300
+                       focus:ring-blue-700 dark:focus:ring-blue-600 dark:ring-offset-gray-800
                         focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                     />
                     <label
                       htmlFor="pink-radio"
-                      className="ml-2  text-sm font-medium text-white dark:text-gray-400"
+                      className="ml-2  text-sm font-medium text-black dark:text-gray-400"
                     >
                       {brand}
                     </label>
@@ -145,7 +146,7 @@ const Shop = () => {
                 value={priceFilter}
                 onChange={handlePriceChange}
                 className="w-full px-3 py-2 placeholder-gray-400 border 
-                rounded-lg focus:outline-none focus:ring focus:border-pink-300"
+                rounded-lg focus:outline-none outline-none border-none focus:ring focus:border-rose-300"
               />
             </div>
             <div className="flex justify-center items-center gap-4">
@@ -159,7 +160,7 @@ const Shop = () => {
           </div>
 
           <div className="p-3">
-            <h2 className="h4 mb-2 text-center">{products?.length} Products</h2>
+            <h2 className="h4 mb-2 text-center ">{products?.length} Products</h2>
             <div className="flex flex-wrap">
               {products.length === 0 ? (
                 <Loader />

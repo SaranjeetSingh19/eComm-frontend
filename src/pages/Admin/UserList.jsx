@@ -51,7 +51,7 @@ const UserList = () => {
   }
 
   return (
-    <div className="p-4 pl-16 text-white">
+    <div className="p-4 pl-16 text-black">
       {/* <h1 className="font-semibold text-2xl mb-4">Users</h1> */}
       {isLoading ? (
         <Loader />
@@ -65,10 +65,10 @@ const UserList = () => {
           <table className="w-full md:4/5 mx-auto">
             <thead>
               <tr>
-                <th className="px-4 py-2 text-left">ID</th>
-                <th className="px-4 py-2 text-left">NAME</th>
-                <th className="px-4 py-2 text-left">EMAIL</th>
-                <th className="px-4 py-2 text-left">ADMIN</th>
+                <th className="px-4 py-2 text-left text-xl text-teal-500">ID</th>
+                <th className="px-4 py-2 text-left text-xl text-teal-500">NAME</th>
+                <th className="px-4 py-2 text-left text-xl text-teal-500">EMAIL</th>
+                <th className="px-4 py-2 text-left text-xl text-teal-500">ADMIN</th>
               </tr>
             </thead>
             <tbody>
@@ -86,7 +86,7 @@ const UserList = () => {
                         />
                         <button
                           onClick={() => updateHandler(user._id)}
-                          className="ml-2 bg-pink-500 px-4 py-2 text-white rounded-lg"
+                          className="ml-2 bg-black px-4 py-2 text-white rounded-lg"
                         >
                           <FaCheck />
                         </button>
@@ -115,7 +115,7 @@ const UserList = () => {
                         />
                         <button
                          onClick={() => updateHandler(user._id)}
-                          className="ml-2 py-2 px-4 text-white bg-yellow-500 rounded-lg"
+                          className="ml-2 py-2 px-4 text-white bg-black rounded-lg"
                         >
                           <FaCheck />
                         </button>

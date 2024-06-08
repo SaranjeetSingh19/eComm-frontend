@@ -1,6 +1,7 @@
 import moment from "moment";
 import React, { useState } from "react";
 import {
+  FaArrowAltCircleLeft,
   FaBox,
   FaClock,
   FaShoppingCart,
@@ -66,12 +67,13 @@ const ProductDetails = () => {
 
   return (
     <>
-      <div>
+      <div className="" >
         <Link
           to="/"
-          className="text-white font-semibold hover:underline ml-[10rem]"
+          className="text-black font-semibold"
         >
-          Go Back ⬅️
+          <FaArrowAltCircleLeft className="text-black text-3xl ml-[5.8rem]"/>
+       
         </Link>
       </div>
       {isLoading ? (
@@ -82,59 +84,59 @@ const ProductDetails = () => {
         </Message>
       ) : (
         <>
-          <div className="flex flex-wrap relative items-between mt-[2rem] ml-[10rem]">
+          <div className="flex flex-wrap relative items-between mt-[2rem] ml-[6rem]">
             <div>
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full xl:w-[35rem]
+                className="w-full xl:w-[35rem] 
                 lg:w-[25rem] md:w-[17rem] sm:w-[12rem] mr-[2rem] h-[25rem]
                 "
               />
-              <HeartIcon product={product} />
+              <HeartIcon product={product}/>
             </div>
-            <div className="flex flex-col justify-between">
-              <h2 className="text-2xl font-semibold text-white ">
+            <div className="flex flex-col justify-between w-[30rem] text-black ml-[1rem]">
+              <h2 className="text-3xl font-semibold">
                 {product.name}
               </h2>
-              <p className="my-4 xl:w-[20rem] lg:w-[35rem] md:w-[30rem] text-sky-400">
+              <p className="my-2 xl:w-[28rem] lg:w-[22rem] md:w-[17rem] text-2xl text-zinc-500">
                 {product.description}
               </p>
-              <p className="text-5xl my-4 font-extrabold text-white">
+              <p className="text-5xl my-4 font-extrabold text-rose-400">
                 ₹ {product.price}
               </p>
 
               <div className="flex items-center justify-between w-[20rem]">
                 <div className="one">
-                  <h1 className="flex items-center mb-6 text-white">
-                    <FaStore className="mr-2 " /> Brand: {product.brand}
+                  <h1 className="flex items-center mb-6 text-black">
+                    <FaStore className="mr-2" /> Brand: {product.brand}
                   </h1>
-                  <h1 className="flex items-center mb-6 text-white">
+                  <h1 className="flex items-center mb-6 text-black">
                     <FaClock className="mr-2 " /> Added:{" "}
                     {moment(product.createdAt).fromNow()}
                   </h1>
-                  <h1 className="flex items-center mb-6 text-white">
-                    <FaStar className="mr-2" /> Reviews: {product.numReviews}
+                  <h1 className="flex items-center mb-6 text-black">
+                    <FaStar className="mr-2 text-yellow-300 shadow-xl" /> Reviews: {product.numReviews}
                   </h1>
                 </div>
 
                 <div className="two text-white">
-                  <h1 className="flex items-center mb-6">
-                    <FaStar className="mr-2 text-white" /> Ratings: {rating}
+                  <h1 className="flex items-center mb-6 text-black">
+                    <FaStar className="mr-2 text-yellow-300 shadow-xl"/> Ratings: {rating}
                   </h1>
-                  <h1 className="flex items-center mb-6">
-                    <FaShoppingCart className="mr-2 text-white" /> Quantity:{" "}
+                  <h1 className="flex items-center mb-6 text-black">
+                    <FaShoppingCart className="mr-2 text-black" /> Quantity:{" "}
                     {product.quantity}
                   </h1>
-                  <h1 className="flex items-center mb-6">
-                    <FaBox className="mr-2 text-white" /> In Stock:{" "}
+                  <h1 className="flex items-center mb-6 text-black">
+                    <FaBox className="mr-2 text-black" /> In Stock:{" "}
                     {product.countInStock}
                   </h1>
                 </div>
               </div>
 
-              <div className="flex justify-between flex-wrap">
-                <Rating
+              <div className="flex justify-between flex-wrap ">
+                <Rating 
                   value={product.rating}
                   text={`${product.numReviews} reviews`}
                 />
@@ -159,7 +161,7 @@ const ProductDetails = () => {
               <div className="btn-container">
                 <button
                   onClick={addToCartHandler}
-                  className="bg-pink-700 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
+                  className="bg-black text-white py-2 px-4 rounded-lg mt-6"
                 >
                   Add To Cart
                 </button>

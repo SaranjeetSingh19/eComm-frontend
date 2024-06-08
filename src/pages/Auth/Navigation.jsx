@@ -6,15 +6,15 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUserAdd,
 } from "react-icons/ai";
-import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
-import "./Navigation.css";
 import FavouriteCount from "../Products/FavouriteCount";
+import "./Navigation.css";
 
-import { FaBrain, FaRobot } from "react-icons/fa";
+import { FaRobot } from "react-icons/fa";
 
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -54,8 +54,8 @@ const Navigation = () => {
     <div
       style={{ zIndex: 999 }}
       className={`${showSidebar ? "hidden" : "flex"}
-      xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 
-      text-white bg-black w-[4.5%] hover:w-[15%] h-[100vh] fixed`}
+      xl:flex  lg:flex lg:pr-12 md:flex md:pr-16 sm:flex sm:pr-16 flex-col justify-between p-4 
+      text-black bg-gradient-to-r from-rose-500 to-rose-100  bg-rose-400 w-[4.5%] hover:w-[15%] h-[100vh] fixed`}
       id="navigation-container"
     >
       <div className=" flex flex-col justify-center space-y-1">
@@ -120,14 +120,13 @@ const Navigation = () => {
             className="flex justify-center items-center 
           transition-transform transform hover:translate-x-2"
           >
-            <FaHeart className="mr-2 mt-[3rem]" size={26} />
+            <FaRegHeart className="mr-2 mt-[3rem] text-black" size={26} />
             <span className="hidden nav-item-name mt-[3rem]">
               Favourite
             </span>{" "}
             <FavouriteCount />
           </div>
         </Link>
-
 
         <Link
           to="/gptsearch"
@@ -176,8 +175,8 @@ const Navigation = () => {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`absolute right-0 mt-12 mr-11 rounded-lg  space-y-3 text-center py-2 bg-zinc-800 text-gray-200 
-            ${!userInfo.isAdmin ? "-top-20 -mt-4" : "-top-80"}
+            className={`absolute right-0 mt-12 mr-4 rounded-lg  space-y-3 text-center py-2 bg-blue-400 text-gray-200 
+            ${!userInfo.isAdmin ? "-top-32 -mt-4" : "-top-80"}
             `}
           >
             {userInfo.isAdmin && (
@@ -185,7 +184,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/dashboard"
-                    className="black px-4 py-2 hover:bg-gray-400 rounded-md"
+                    className="black px-4 py-2 hover:bg-blue-800 rounded-md"
                   >
                     Dashboard
                   </Link>
@@ -193,7 +192,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/productlist"
-                    className="black px-4 py-2 hover:bg-gray-400 rounded-md"
+                    className="black px-4 py-2 hover:bg-blue-800 rounded-md"
                   >
                     Products
                   </Link>
@@ -201,7 +200,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/categorylist"
-                    className="black px-4 py-2 hover:bg-gray-400 rounded-md"
+                    className="black px-4 py-2 hover:bg-blue-800 rounded-md"
                   >
                     Category
                   </Link>
@@ -209,7 +208,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/orderlist"
-                    className="black px-4 py-2 hover:bg-gray-400 rounded-md"
+                    className="black px-4 py-2 hover:bg-blue-800 rounded-md"
                   >
                     Orders
                   </Link>
@@ -217,17 +216,17 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/userlist"
-                    className="black px-4 py-2 hover:bg-gray-400 rounded-md"
+                    className="black px-4 py-2 hover:bg-blue-800 rounded-md"
                   >
                     Users
                   </Link>
                 </li>
               </>
             )}
-            <li>
+          <li className="mb-2">
               <Link
                 to="/profile"
-                className="black px-4 py-2 hover:bg-gray-400  rounded-md"
+                className="black px-4 py-2 hover:bg-blue-800 rounded-md"
               >
                 Profile
               </Link>
@@ -236,7 +235,7 @@ const Navigation = () => {
               <Link
                 onClick={logoutHandler}
                 to="/logout"
-                className="black px-4 py-2 hover:bg-gray-400 rounded-md"
+                className="black px-4 py-2 hover:bg-blue-800 rounded-md"
               >
                 Logout
               </Link>

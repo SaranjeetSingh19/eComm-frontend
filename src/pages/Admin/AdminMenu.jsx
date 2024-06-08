@@ -14,26 +14,26 @@ const AdminMenu = () => {
       <button
         className={`${
           isMenuOpen ? "top-2 right-2" : "top-5 right-7"
-        } bg-emerald-600 p-2 fixed rounded-lg`}
+        } bg-white p-1 fixed text-white rounded-full`}
         onClick={toggleMenu}
       >
         {isMenuOpen ? (
-          <FaTimes color="white" />
+          <FaTimes color="black" />
         ) : (
           <>
-            <div className="w-6 h-0.5 my-1 bg-white"></div>
-            <div className="w-6 h-0.5 my-1 bg-white"></div>
-            <div className="w-6 h-0.5 my-1 bg-white"></div>
+            <div className="w-6 h-0.5 my-1 bg-black"></div>
+            <div className="w-6 h-0.5 my-1 bg-black"></div>
+            <div className="w-6 h-0.5 my-1 bg-black"></div>
           </>
         )}
       </button>
 
       {isMenuOpen && (
-        <section className="bg-green-300 p-4 fixed right-7 top-5">
+        <section className="bg-rose-300 rounded-lg p-2 fixed right-7 top-5">
           <ul className="list-none mt-2">
             <li>
               <NavLink
-                className="list-item py-2 px-3  mb-5 bg-white rounded-sm"
+                className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/dashboard"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -45,7 +45,7 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-                className="list-item py-2 px-3  mb-5 bg-white rounded-sm"
+         className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/categorylist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -57,7 +57,8 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-                className="list-item py-2 px-3  mb-5 bg-white rounded-sm"
+                 className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
+
                 to="/admin/productlist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -69,7 +70,7 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-                className="list-item py-2 px-3  mb-5 bg-white rounded-sm"
+                 className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/allproductslist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -79,10 +80,9 @@ const AdminMenu = () => {
               </NavLink>
             </li>
 
-
             <li>
               <NavLink
-                className="list-item py-2 px-3  mb-5 bg-white rounded-sm"
+                 className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/userlist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -94,7 +94,7 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-                className="list-item py-2 px-3  mb-5 bg-white rounded-sm"
+                 className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/orderlist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",

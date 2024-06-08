@@ -9,18 +9,18 @@ const Product = ({ product }) => {
         <img
           src={product.image}
           alt={product.name}
-          className="w-full sm:w-[26rem] h-[15rem] rounded"
+          className="w-full rounded-lg sm:w-[26rem] h-[15rem] rounded"
         />
         <HeartIcon product={product}/>
       </div>
       <div className="p-4">
         <Link to={`/product/${product._id}`}>
           <h2 className="flex justify-between items-center">
-            <div className="text-lg">{product.name}</div>
+            <div className="text-xl text-black">{product.name}</div>
             <span
-              className="bg-pink-100
-            text-sm text-pink-700 font-medium mr-2 px-2.5 py-0.5 
-            rounded-full dark:bg-pink-900 dark:text-pink-300"
+              className="bg-teal-100
+            text-sm text-teal-700 font-medium mr-2 px-2.5 py-0.5 
+            rounded-full dark:bg-teal-900 dark:text-teal-300"
             >
                ₹ {product.price}
   

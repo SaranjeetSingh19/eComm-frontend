@@ -5,9 +5,9 @@ const Rating = ({ value, text, color }) => {
   const halfStars = value - fullStars > 0.5 ? 1 : 0;
   const emptyStar = 5 - fullStars - halfStars;
   return (
-    <div className="flex items-center text-white">
+    <div className="flex items-center">
       {[...Array(fullStars)].map((_, index) => (
-        <FaStar key={index} className={`text-${color} ml-1`} />
+        <FaStar key={index} className={`text-zinc-400 ml-1`} />
       ))}
 
       {halfStars === 1 && <FaStarHalfAlt className={`text-${color} ml-1`} />}

@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="flex justify-around text-white">
+      <div className="flex justify-around text-black">
         <div className="xl:block lg:hidden md:hidden sm:hidden">
             <div className="grid grid-cols-2">
                 {

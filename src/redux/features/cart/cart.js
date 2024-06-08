@@ -4,8 +4,9 @@ export const addDecimals = (num) => {
 
 export const updateCart = (state) => {
   state.itemsPrice = addDecimals(
-    state.cartItems.reduce(
-      (acc, item) => (acc + item.price * item.price * item.qty, 0)
+    state?.cartItems?.reduce(
+      (acc, item) => acc + item.price * item.qty,
+      0
     )
   );
 
