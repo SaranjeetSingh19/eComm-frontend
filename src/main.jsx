@@ -26,6 +26,8 @@ import ProductDetails from "./pages/Products/ProductDetails.jsx";
 import Cart from "./pages/Products/Cart.jsx";
 import Shop from "./pages/Shop.jsx";
 import GptPage from "./pages/Auth/GptPage.jsx";
+import Shipping from "./pages/Orders/Shipping.jsx";
+import PlaceOrder from "./pages/Orders/PlaceOrder.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,6 +44,8 @@ const router = createBrowserRouter(
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />} />
         <Route path="/gptsearch" element={<GptPage />} />
+        <Route path="/shipping" element={<Shipping />} />
+        <Route path="/placeorder" element={<PlaceOrder />} />
       </Route>
 
       {/* Admin routes 👇🏻 */}

@@ -7,7 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Ignore the .env file
 node_modules
+.env
 
 dist
 dist-ssr
