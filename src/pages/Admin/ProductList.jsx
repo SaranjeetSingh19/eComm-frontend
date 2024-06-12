@@ -44,7 +44,6 @@ const ProductList = () => {
       productData.append("countInStock", stock);
 
       const { data } = await createProduct(productData);
-      console.log("Data is =", data);
 
       if (data?.error) {
         console.log(data?.error);

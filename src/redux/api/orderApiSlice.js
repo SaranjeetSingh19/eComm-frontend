@@ -25,6 +25,14 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
+    // Add the mock payment mutation
+    mockPayOrder: builder.mutation({
+      query: (orderId) => ({
+        url: `${ORDERS_URL}/mock-payment/${orderId}`,
+        method: 'PUT',
+      }),
+    }),
+
     getPaypalClientId: builder.query({
       query: () => ({
         url: PAYPAL_URL,
@@ -75,5 +83,5 @@ export const {
   useGetTotalOrdersQuery,
   useGetTotalSalesQuery,
   useGetTotalSalesByDateQuery,
-  useGetOrdersQuery,
+  useGetOrdersQuery, useMockPayOrderMutation
 } = orderApiSlice;

@@ -9,6 +9,7 @@ import {
   useDeliverOrderMutation,
   useGetOrderDetailsQuery,
   useGetPaypalClientIdQuery,
+  useMockPayOrderMutation,
   usePayOrderMutation,
 } from "../../redux/api/orderApiSlice";
 
@@ -29,6 +30,10 @@ const Order = () => {
 
   const [payOrder, { isLoading: loadingPay }] = usePayOrderMutation();
 
+  const [mockPayOrder, { isLoading: loadingMockPay }] =
+    useMockPayOrderMutation();
+
+
   const [deliverOrder, { isLoading: loadingDeliver }] =
     useDeliverOrderMutation();
   const { userInfo } = useSelector((state) => state.auth);
@@ -40,6 +45,18 @@ const Order = () => {
     isLoading: loadingPayPal,
     error: errorPayPal,
   } = useGetPaypalClientIdQuery();
+
+  const handleMockPayment = async () => {
+    try {
+      const { data } = await mockPayOrder(orderId);
+
+      setIsPaid(true);
+      refetch();
+    } catch (error) {
+      console.error(error);
+      alert("Mock payment failed");
+    }
+  };
 
   function onApprove(data, actions) {
     return actions?.order?.capture().then(async function (details) {
@@ -175,7 +192,15 @@ const Order = () => {
           {order.isPaid ? (
             <Message variant="success">Paid on: {order.paidAt}</Message>
           ) : (
-            <Message variant="danger">Not paid</Message>
+            <Message variant="danger">
+              Not paid{" "}
+              <button
+                onClick={handleMockPayment}
+                className="px-1 py-1 ml-[15rem] opacity-20 bg-green-500 text-white rounded-full"
+              >
+                
+              </button>{" "}
+            </Message>
           )}
         </div>
 

@@ -40,7 +40,6 @@ const CategoryList = () => {
       }
       refetch();
     } catch (error) {
-      console.log(error);
       toast.error("Creating category failed!");
     }
   };

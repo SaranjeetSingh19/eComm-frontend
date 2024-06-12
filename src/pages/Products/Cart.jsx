@@ -11,7 +11,6 @@ const Cart = () => {
 
   const { cartItems } = cart;
 
-  console.log(cartItems);
 
   const addToCartHandler = (product, qty) => {
     dispatch(addToCart({ ...product, qty }));

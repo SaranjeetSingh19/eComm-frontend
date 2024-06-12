@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 const FavouriteCount = () => {
   const favourite = useSelector((state) => state.favourites);
   const favLength = favourite.length;
-  console.log(favLength);
   return (
     <div className="absolute left-5 top-8">
       {favLength > 0 && (
