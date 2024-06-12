@@ -12,6 +12,7 @@
   "dependencies": {
     "@paypal/react-paypal-js": "^8.3.0",
     "@reduxjs/toolkit": "^2.2.4",
+    "@stripe/stripe-js": "^3.5.0",
     "apexcharts": "^3.49.0",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",

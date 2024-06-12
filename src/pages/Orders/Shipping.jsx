@@ -80,7 +80,7 @@ const Shipping = () => {
               type="text"
               className="mt-1 p-2 mb-2 border-none outline-none rounded-2xl w-[25rem]"
               placeholder="Enter country"
-              value={address}
+              value={country}
               onChange={(e) => setCountry(e.target.value)}
             />
           </div>

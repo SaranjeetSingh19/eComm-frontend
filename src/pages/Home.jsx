@@ -15,7 +15,7 @@ const Home = () => {
         <Loader />
       ) : isError ? (
         <Message variant="danger">
-          {isError?.data.message || isError?.error}
+          {isError?.data?.message || isError?.error}
         </Message>
       ) : (
         <>
@@ -26,23 +26,23 @@ const Home = () => {
             <Link
               to="/shop"
               className="bg-black text-white font-bold rounded-full py-2 px-10 mr-4 sm:mr-[18rem] mt-4 sm:mt-[10rem]"
-            >Shop</Link> 
+            >
+              Shop
+            </Link>
           </div>
           <div>
-            <div className="px-4 sm:px-20 flex flex-wrap justify-center sm:justify-between mt-[2rem] text-white">
-                {
-                    data.products.map((product) => (
-                        <div key={product._id} className="w-full sm:w-auto">
-                            <Product product={product}/>
-                        </div> 
-                    ))
-                }
+            <div className="px-4 sm:px-24 flex flex-wrap justify-center sm:justify-between mt-[2rem] text-white">
+              {data?.products?.map((product) => (
+                <div key={product._id} className="w-full sm:w-auto">
+                  <Product product={product} />
+                </div>
+              ))}
             </div>
           </div>
         </>
       )}
     </>
   );
-}
+};
 
 export default Home;

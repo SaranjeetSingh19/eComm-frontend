@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
-import { useRegisterMutation } from "../../redux/api/usersApiSlice";
-import Loader from "../../components/Loader";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loader from "../../components/Loader";
+import { useRegisterMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 
 const Register = () => {
@@ -53,16 +53,11 @@ const Register = () => {
     <section className="pl-[10rem] flex flex-wrap justify-center">
       <div className="mr-[4rem] mt-[2rem]">
         <h1 className="text-black text-4xl font-semibold mb-2">
-        welcome to <span className="text-rose-500">Shifsy</span> <br /> <span className="text-2xl">create your account</span>
+          welcome to <span className="text-rose-500">Shifsy</span> <br />{" "}
+          <span className="text-2xl">create your account</span>
         </h1>
         <form onSubmit={submitHandler} className="container w-[30rem]">
           <div className="my-[1.5rem]">
-            {/* <label
-              htmlFor="name"
-              className="black ml-2 text-sm font-medium text-white"
-            >
-              Name
-            </label> */}
             <input
               type="text"
               id="name"
@@ -73,12 +68,6 @@ const Register = () => {
             />
           </div>
           <div className="my-[2rem]">
-            {/* <label
-              htmlFor="email"
-              className="black ml-2 text-sm font-medium text-white"
-            >
-              Email
-            </label> */}
             <input
               type="email"
               id="email"
@@ -89,12 +78,6 @@ const Register = () => {
             />
           </div>
           <div className="my-[2rem]">
-            {/* <label
-              htmlFor="password"
-              className="black ml-2 text-sm font-medium text-white"
-            >
-              Password
-            </label> */}
             <input
               type="password"
               placeholder="Password"
@@ -105,12 +88,6 @@ const Register = () => {
             />
           </div>
           <div className="my-[2rem]">
-            {/* <label
-              htmlFor="confirmPassword"
-              className="black ml-2 text-sm font-medium text-white"
-            >
-              Confirm Password
-            </label> */}
             <input
               type="password"
               placeholder="Confirm password"

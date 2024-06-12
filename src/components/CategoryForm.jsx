@@ -24,8 +24,8 @@ const CategoryForm = ({
           {handleDelete && (
             <button
               onClick={handleDelete}
-              className="bg-black mt-2 text-white py-2 px-4 rounded-lg hover:bg-zinc-800">
-            
+              className="bg-black mt-2 text-white py-2 px-4 rounded-lg hover:bg-zinc-800"
+            >
               Delete
             </button>
           )}

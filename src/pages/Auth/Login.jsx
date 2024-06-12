@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
-import { useLoginMutation } from "../../redux/api/usersApiSlice";
-import Loader from "../../components/Loader";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import Loader from "../../components/Loader";
+import { useLoginMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
 
 const Login = () => {
@@ -45,16 +45,10 @@ const Login = () => {
       <section className="pl-[10rem] flex flex-wrap justify-center items-center">
         <div className="mr-[4rem] mt-[5rem]">
           <h1 className="text-black text-3xl font-semibold mb-4">
-           Login your account
+            Login your account
           </h1>
           <form onSubmit={submitHandler} className="container w-[40rem]">
             <div className="my-[2rem]">
-              {/* <label
-                htmlFor="email"
-                className="black ml-2 text-sm font-medium text-white"
-              >
-                Email Address
-              </label> */}
               <input
                 type="email"
                 id="email"
@@ -66,12 +60,6 @@ const Login = () => {
             </div>
 
             <div className="my-[2rem]">
-              {/* <label
-                htmlFor="password"
-                className="black text-sm ml-2 font-medium text-white"
-              >
-                Password
-              </label> */}
               <input
                 type="password"
                 id="password"

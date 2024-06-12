@@ -38,7 +38,7 @@ const CategoryList = () => {
         setName("");
         toast.success(`${result.name} is created.`);
       }
-      refetch()
+      refetch();
     } catch (error) {
       console.log(error);
       toast.error("Creating category failed!");
@@ -93,7 +93,6 @@ const CategoryList = () => {
     }
   };
 
-  
   useEffect(() => {
     refetch();
   }, [refetch]);
@@ -102,7 +101,9 @@ const CategoryList = () => {
     <div className="ml-4 sm:ml-[10rem] flex flex-col md:flex-row">
       <AdminMenu />
       <div className="md:w-3/4 p-3">
-        <div className="h-12 text-black text-3xl border-b-2 border-black">Manage Categories.</div>
+        <div className="h-12 text-black text-3xl border-b-2 border-black">
+          Manage Categories.
+        </div>
         <CategoryForm
           value={name}
           setValue={setName}
@@ -110,7 +111,7 @@ const CategoryList = () => {
         />
         <br />
         <hr />
-  
+
         <div className="flex flex-wrap">
           {categories?.map((category, i) => (
             <div key={i} className="w-full sm:w-auto">
@@ -130,7 +131,7 @@ const CategoryList = () => {
             </div>
           ))}
         </div>
-  
+
         <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>
           <CategoryForm
             value={updatingName}
@@ -143,7 +144,6 @@ const CategoryList = () => {
       </div>
     </div>
   );
-  
 };
 
 export default CategoryList;

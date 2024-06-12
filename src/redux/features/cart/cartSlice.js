@@ -1,4 +1,3 @@
- 
 import { createSlice } from "@reduxjs/toolkit";
 import { updateCart } from "./cart";
 
@@ -54,7 +53,7 @@ export const {
   removeFromCart,
   saveShippingAddress,
   clearCartItems,
-  resetCart
+  resetCart,
 } = cartSlice.actions;
 
-export default cartSlice.reducer
+export default cartSlice.reducer;

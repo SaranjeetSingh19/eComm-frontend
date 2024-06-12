@@ -11,11 +11,15 @@ const GptPage = () => {
     question;
 
   async function generateAns() {
-    setAnswer("Loading...");
+    setAnswer(
+      <div class="flex flex-row justify-center gap-2">
+        <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+        <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+        <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+      </div>
+    );
     const response = await axios({
-      url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${
-        import.meta.env.VITE_GEMINI_KEY
-      }`,
+      url: `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${" AIzaSyCFFsmKrjtnDGUbub-mYh4HS19omqBLu2k"}`,
       method: "post",
       data: { contents: [{ parts: [{ text: query }] }] },
     });
@@ -27,7 +31,13 @@ const GptPage = () => {
     <div className="px-32 text-center w-full h-[32rem] flex flex-col items-center justify-between">
       <h1 className="text-black text-6xl">Your AI</h1>
 
-      {answer ?<p className="text-black w-[50rem] text-lg bg-blue-100 bg-gradient-to-r from-blue-100 to-rose-200 rounded-lg p-8 mt-4">{answer}</p> : ""}
+      {answer ? (
+        <p className="text-black w-[50rem] text-center text-lg  rounded-lg p-8 mt-4">
+          {answer}
+        </p>
+      ) : (
+        ""
+      )}
 
       <div className="flex items-center mt-[4rem]">
         <input

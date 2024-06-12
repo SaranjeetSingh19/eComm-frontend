@@ -89,20 +89,20 @@ const ProductDetails = () => {
               <img
                 src={product.image}
                 alt={product.name}
-                className="w-full xl:w-[35rem] 
-                lg:w-[25rem] md:w-[17rem] sm:w-[12rem] mr-[2rem] h-[25rem]
+                className="w-full xl:w-[30rem] p-2  
+                lg:w-[25rem] md:w-[17rem] sm:w-[12rem] mr-[2rem] h-[29rem]
                 "
               />
               <HeartIcon product={product}/>
             </div>
             <div className="flex flex-col justify-between w-[30rem] text-black ml-[1rem]">
-              <h2 className="text-3xl font-semibold">
+              <h2 className="text-2xl font-semibold">
                 {product.name}
               </h2>
-              <p className="my-2 xl:w-[28rem] lg:w-[22rem] md:w-[17rem] text-2xl text-zinc-500">
-                {product.description}
+              <p className="my-2 xl:w-[28rem] lg:w-[22rem] md:w-[17rem] text-xl text-zinc-500">
+                {product.description.substring(0, 150)}...
               </p>
-              <p className="text-5xl my-4 font-extrabold text-rose-400">
+              <p className="text-4xl my-4 font-extrabold text-rose-500">
                 ₹ {product.price}
               </p>
 
@@ -167,7 +167,7 @@ const ProductDetails = () => {
                 </button>
               </div>
             </div>
-            <div className="mt-[5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
+            <div className="mt-[3.5rem] container flex flex-wrap items-start justify-between ml-[10rem]">
               <ProductTabs
                 loadingProductReview={loadingProductReview}
                 userInfo={userInfo}

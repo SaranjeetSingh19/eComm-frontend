@@ -4,25 +4,23 @@ import HeartIcon from "./HeartIcon";
 
 const SmallProduct = ({ product }) => {
   return (
-    <div className="w-[15rem]  ml-[2rem] p-3">
+    <div className="w-[14rem]  ml-[2.5rem]  p-2 ">
       <div className="relative">
         <img
           src={product.image}
           alt={product.name}
           className="rounded h-40 w-56"
         />
-        <HeartIcon product={product}/> 
+        <HeartIcon product={product} />
 
-        <div className="p-54">
+        <div className="p-5">
           <Link to={`/product/${product._id}`}>
-            <h2 className="flex justify-between items-center mt-3">
-              <div>{product.name}</div>
-              <span className="bg-teal-100 text-teal-800 font-medium 
-              rounded-full dark:bg-teal-900 dark:text-teal-400
-              text-sm mr-2 px-2.5 py-0.5">
-                ₹ { product.price} 
+            <div className="">
+              <div className="text-sm truncate -mt-3">{product.name}</div>
+              <span className="bg-teal-200 w-16 text-teal-800 font-medium text-xs rounded-full dark:bg-teal-900 dark:text-teal-400  px-2.5 py-0.5 flex items-center mt-1">
+                ₹{product.price}
               </span>
-            </h2>
+            </div>
           </Link>
         </div>
       </div>

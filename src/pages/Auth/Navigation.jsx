@@ -223,7 +223,7 @@ const Navigation = () => {
                 </li>
               </>
             )}
-          <li className="mb-2">
+            <li className="mb-2">
               <Link
                 to="/profile"
                 className="black px-4 py-2 hover:bg-blue-800 rounded-md"

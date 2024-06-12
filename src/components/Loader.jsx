@@ -1,9 +1,11 @@
- 
-
 const Loader = () => {
   return (
-    <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-pink-400 border-opactiy-50"> </div>
-  )
-}
+    <div class="flex flex-row items-center justify-center gap-2">
+      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.3s]"></div>
+      <div class="w-4 h-4 rounded-full bg-blue-700 animate-bounce [animation-delay:.7s]"></div>
+    </div>
+  );
+};
 
-export default Loader
+export default Loader;

@@ -7,7 +7,7 @@ import {
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
- 
+
 const ProductList = () => {
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
@@ -25,12 +25,13 @@ const ProductList = () => {
   const [createProduct] = useCreateProductMutation();
   const { data: categories, refetch } = useFetchCategoriesQuery();
 
-  useEffect(() => {refetch()}, [refetch])
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  
     try {
       const productData = new FormData();
       productData.append("image", image);
@@ -43,7 +44,7 @@ const ProductList = () => {
       productData.append("countInStock", stock);
 
       const { data } = await createProduct(productData);
-      console.log("Data is =" ,data);
+      console.log("Data is =", data);
 
       if (data?.error) {
         console.log(data?.error);
@@ -78,13 +79,15 @@ const ProductList = () => {
       <div className="flex justify-around flex-col md:flex-row">
         <AdminMenu />
         <div className="md:w-3/4  p-3">
-          <div className="h-12 text-black text-3xl border-b-2 border-black" >Create Product.</div>
+          <div className="h-12 text-black text-3xl border-b-2 border-black">
+            Create Product.
+          </div>
           {imageUrl && (
             <div className="text-center">
               <img
                 src={imageUrl}
                 alt="product"
-                className="block mx-auto max-h-[200px]"
+                className="block mx-auto max-h-[10rem] w-[10rem] mt-2"
               />
             </div>
           )}
@@ -93,22 +96,25 @@ const ProductList = () => {
               className="px-4 text-white border block 
             w-full text-center text-2xl rounded-lg cursor-pointer font-bold py-11 "
             >
-              {image ? image.name : <span className="bg-blue-600 px-6 py-3 rounded-full hover:bg-blue-500">Upload Image</span>}
+              {image ? (
+                image.name
+              ) : (
+                <span className="bg-blue-600 px-6 py-3 rounded-full hover:bg-blue-500">
+                  Upload Image
+                </span>
+              )}
               <input
                 type="file"
                 name="image"
                 accept="image/*"
                 onChange={uploadFileHandler}
-                className={!image ? "hidden" : "text-white"}
+                className={!image ? "hidden" : "text-black"}
               />
             </label>
           </div>
           <div className="p-3">
             <div className="flex flex-wrap">
               <div className="one">
-                {/* <label htmlFor="name" className="text-red-400">
-                  Name
-                </label> */}
                 <br />
                 <input
                   type="text"
@@ -120,9 +126,6 @@ const ProductList = () => {
               </div>
 
               <div className="two ml-10">
-                {/* <label htmlFor="name block" className="text-red-400">
-                  Price
-                </label> */}
                 <br />
                 <input
                   type="number"
@@ -134,9 +137,6 @@ const ProductList = () => {
               </div>
 
               <div className="three">
-                {/* <label htmlFor="name block" className="text-red-400">
-                  Quantity
-                </label> */}
                 <br />
                 <input
                   type="number"
@@ -148,9 +148,6 @@ const ProductList = () => {
               </div>
 
               <div className="four ml-10">
-                {/* <label htmlFor="name block" className="text-red-400">
-                  Brand
-                </label> */}
                 <br />
                 <input
                   type="text"
@@ -161,20 +158,17 @@ const ProductList = () => {
                 />
               </div>
             </div>
-            {/* <label htmlFor="" className="text-red-400 my-5">
-              Description
-            </label> */}
+
             <textarea
               type="text"
-              // className="mt-1 p-2 border-none outline-none py-3 rounded-2xl w-[24rem]"
-              className="p-2 mb-3  rounded-2xl border-none  w-[92%] mt-6"
+              className="p-2 mb-3 rounded-2xl border-none w-[92%] mt-6"
               value={description}
               placeholder="Description"
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
 
-            <div className="flex gap-12">
-              <div>
+            <div className="flex ">
+              <div className="mr-10">
                 <label htmlFor="name block" className="text-black ml-1">
                   Count In Stock
                 </label>{" "}

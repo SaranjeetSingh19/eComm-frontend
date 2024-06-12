@@ -45,7 +45,7 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-         className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
+                className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/categorylist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -57,8 +57,7 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-                 className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
-
+                className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/productlist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -70,7 +69,7 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-                 className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
+                className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/allproductslist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -82,7 +81,7 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-                 className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
+                className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/userlist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",
@@ -94,7 +93,7 @@ const AdminMenu = () => {
 
             <li>
               <NavLink
-                 className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
+                className="list-item py-1 px-2 mb-3 bg-white rounded-sm"
                 to="/admin/orderlist"
                 style={({ isActive }) => ({
                   color: isActive ? "red" : "black",

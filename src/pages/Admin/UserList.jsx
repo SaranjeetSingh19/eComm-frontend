@@ -1,25 +1,23 @@
-import { useEffect, useState } from "react";
-import { FaTrash, FaEdit, FaTimes, FaCheck } from "react-icons/fa";
+import { useState } from "react";
+import { FaCheck, FaEdit, FaTimes, FaTrash } from "react-icons/fa";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 import {
   useDeletedUserMutation,
   useGetUsersQuery,
   useUpdateUserMutation,
 } from "../../redux/api/usersApiSlice";
-import Message from "../../components/Message";
-import Loader from "../../components/Loader";
 import AdminMenu from "./AdminMenu";
 
 const UserList = () => {
   const { data: users, refetch, isLoading, error } = useGetUsersQuery();
-  
+
   const [deleteUser] = useDeletedUserMutation();
   const [updateUser] = useUpdateUserMutation();
 
   const [editableUserId, setEditableUserId] = useState(null);
   const [editableUsername, setEditableUsername] = useState("");
   const [editableUserEmail, setEditableUserEmail] = useState("");
-
-
 
   const deleteHandler = async (id) => {
     try {
@@ -31,28 +29,27 @@ const UserList = () => {
   };
 
   const toggleEdit = (id, username, email) => {
-    setEditableUserEmail(email)
-    setEditableUserId(id)
-    setEditableUsername(username)
-  }
+    setEditableUserEmail(email);
+    setEditableUserId(id);
+    setEditableUsername(username);
+  };
 
   const updateHandler = async (id) => {
     try {
-        await updateUser({
-            userId: id,
-            username: editableUsername,
-            email: editableUserEmail
-        })
-        setEditableUserId(null)
-        refetch()
+      await updateUser({
+        userId: id,
+        username: editableUsername,
+        email: editableUserEmail,
+      });
+      setEditableUserId(null);
+      refetch();
     } catch (error) {
-        toast.error(error?.data?.message || "Oopsie yr!")
+      toast.error(error?.data?.message || "Oopsie yr!");
     }
-  }
+  };
 
   return (
     <div className="p-4 pl-16 text-black">
-      {/* <h1 className="font-semibold text-2xl mb-4">Users</h1> */}
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -65,10 +62,18 @@ const UserList = () => {
           <table className="w-full md:4/5 mx-auto">
             <thead>
               <tr>
-                <th className="px-4 py-2 text-left text-xl text-teal-500">ID</th>
-                <th className="px-4 py-2 text-left text-xl text-teal-500">NAME</th>
-                <th className="px-4 py-2 text-left text-xl text-teal-500">EMAIL</th>
-                <th className="px-4 py-2 text-left text-xl text-teal-500">ADMIN</th>
+                <th className="px-4 py-2 text-left text-xl text-teal-500">
+                  ID
+                </th>
+                <th className="px-4 py-2 text-left text-xl text-teal-500">
+                  NAME
+                </th>
+                <th className="px-4 py-2 text-left text-xl text-teal-500">
+                  EMAIL
+                </th>
+                <th className="px-4 py-2 text-left text-xl text-teal-500">
+                  ADMIN
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -114,7 +119,7 @@ const UserList = () => {
                           className="text-black w-full p-2 rounded-lg border"
                         />
                         <button
-                         onClick={() => updateHandler(user._id)}
+                          onClick={() => updateHandler(user._id)}
                           className="ml-2 py-2 px-4 text-white bg-black rounded-lg"
                         >
                           <FaCheck />

@@ -26,7 +26,8 @@ const ProductCard = ({ prod }) => {
       'bg-purple-100',
       'bg-teal-100',
       'bg-orange-100',
-      'bg-gray-100'
+      'bg-gray-100',
+      "bg-teal-200",
     ];
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
@@ -36,25 +37,25 @@ const ProductCard = ({ prod }) => {
   
 
   return (
-    <div className={`max-w-sm relative ${randomColor} h-[20rem] w-[16rem] rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700`}>
+    <div className={`max-w-sm relative ${randomColor}   w-[16rem] rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700`}>
       <section className="relative">
         <Link to={`/product/${prod._id}`}>
           <span className="absolute bottom-3 right-3 bg-blue-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full ">
             {prod?.brand}
-          </span>
+          </span> 
           <img
             className="cursor-pointer w-full hover:rounded-md"
             src={prod?.image}
             alt={prod?.name}
-            style={{ height: "140px", objectFit: "cover" }}
+            style={{ height: "120px", objectFit: "scale-down" }}
           />
         </Link>
         <HeartIcon product={prod} />
       </section>
       <div className="p-5">
         <div className="flex justify-between">
-          <h5 className="mb-2 text-lg text-black dark:text-white">
-            {prod?.name}
+          <h5 className="mb-2 text- text-black dark:text-white">
+            {prod?.name.substring(0, 12)}...
           </h5>
           <p className="text-black font-semibold text-sm">
             {prod?.price?.toLocaleString("en-US", {
@@ -64,7 +65,7 @@ const ProductCard = ({ prod }) => {
           </p>  
         </div>
         <p className="mb-3 font-normal text-sm text-zinc-600">
-          {prod?.description?.substring(0, 160)}...
+          {prod?.description?.substring(0, 50)}...
         </p>
 
         <section className="flex justify-between items-center">
