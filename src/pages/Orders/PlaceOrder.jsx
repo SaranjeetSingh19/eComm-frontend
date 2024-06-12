@@ -39,8 +39,8 @@ const PlaceOrder = () => {
       dispatch(clearCartItems());
       navigate(`/order/${res._id}`);
     } catch (error) {
-      toast.error(error?.message || "Something went wrong");
-      console.error(error?.message || "Something went wrong");
+      toast.error(error?.message || "Something went wrong 4");
+      console.error(error?.message || "Something went wrong 5");
     }
   };
 

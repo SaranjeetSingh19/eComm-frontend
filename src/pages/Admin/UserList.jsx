@@ -24,6 +24,8 @@ const UserList = () => {
       await deleteUser(id);
       refetch();
     } catch (error) {
+    console.log(error);
+
       toast.error(error?.data?.message || "Oops something is wrong...");
     }
   };
@@ -44,6 +46,7 @@ const UserList = () => {
       setEditableUserId(null);
       refetch();
     } catch (error) {
+    console.log(error);
       toast.error(error?.data?.message || "Oopsie yr!");
     }
   };

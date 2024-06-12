@@ -40,7 +40,8 @@ const Profile = () => {
         dispatch(setCredentials({ ...res }));
         toast.success("Profile updated successfully 🫡");
       } catch (error) {
-        toast.error(error?.data?.message || "Something went wrong");
+    console.log(error);
+        toast.error(error?.data?.message || "Something went wrong 8");
       }
     }
   };

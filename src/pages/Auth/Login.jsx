@@ -35,7 +35,8 @@ const Login = () => {
       dispatch(setCredentials({ ...res }));
       toast.success(`Welcome Back ${res.username} 😎`);
     } catch (error) {
-      toast.error(error?.data?.message || "Something went wrong");
+    console.log(error);
+      toast.error(error?.data?.message || "Something went wrong 2");
     }
   };
 

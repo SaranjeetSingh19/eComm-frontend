@@ -13,7 +13,7 @@ const OrderList = () => {
         <Loader />
       ) : error ? (
         <Message variant="danger">
-          {error?.data?.message || error?.error || "Something went wrong"}
+          {error?.data?.message || error?.error || "Something went wrong 1"}
         </Message>
       ) : (
         <table className="container mx-auto">
