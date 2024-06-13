@@ -27,6 +27,7 @@ const PlaceOrder = () => {
 
   const placeOrderHandler = async () => {
     try {
+      console.log("chla 1");
       const res = await createOrder({
         orderItems: cart.cartItems,
         shippingAddress: cart.shippingAddress,
@@ -36,11 +37,14 @@ const PlaceOrder = () => {
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
+      console.log("chla 2");
       dispatch(clearCartItems());
+      console.log("chla 3");
       navigate(`/order/${res._id}`);
     } catch (error) {
       toast.error(error?.message || "Something went wrong 4");
-      console.error(error?.message || "Something went wrong 5");
+      console.error(error?.message);
+      console.error(error);
     }
   };
 
