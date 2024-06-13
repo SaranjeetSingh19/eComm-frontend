@@ -113,9 +113,8 @@ const Shop = () => {
             </h2>
 
             <div className="p-5">
-              {uniqueBrands?.map((brand) => (
-                <>
-                  <div key={brand._id} className="flex items-center mr-4 mb-5">
+              {uniqueBrands?.map((brand, i) => (
+                  <div key={i} className="flex items-center mr-4 mb-5">
                     <input
                       type="radio"
                       id={brand}
@@ -132,7 +131,6 @@ const Shop = () => {
                       {brand}
                     </label>
                   </div>
-                </>
               ))}
             </div>
             <h2 className="text-center py-2 bg-emerald-400 rounded-full mb-2">
