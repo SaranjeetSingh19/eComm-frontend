@@ -58,42 +58,204 @@ const ProductDetails = lazy(() =>
 );
 const Shop = lazy(() => import("./pages/Shop.jsx"));
 const Profile = lazy(() => import("./pages/User/Profile.jsx"));
-// const store = lazy(() => import("./redux/store.js"));
 const AdminDashboard = lazy(() => import("./pages/Admin/AdminDashboard.jsx"));
 const OrderList = lazy(() => import("./pages/Admin/OrderList.jsx"));
 const Order = lazy(() => import("./pages/Orders/Order.jsx"));
 const UserOrder = lazy(() => import("./pages/Orders/UserOrder.jsx"));
+import Loader from "./components/Loader.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Suspense fallback={<div>Loading...</div>}><App /></Suspense>}>
-      <Route path="/login" element={<Suspense fallback={<div>Loading...</div>}><Login /></Suspense>} />
-      <Route path="/register" element={<Suspense fallback={<div>Loading...</div>}><Register /></Suspense>} />
-      <Route path="/favourite" element={<Suspense fallback={<div>Loading...</div>}><Favourites /></Suspense>} />
-      <Route path="/cart" element={<Suspense fallback={<div>Loading...</div>}><Cart /></Suspense>} />
-      <Route path="/shop" element={<Suspense fallback={<div>Loading...</div>}><Shop /></Suspense>} />
-      <Route path="/user-order" element={<Suspense fallback={<div>Loading...</div>}><UserOrder /></Suspense>} />
+    <Route
+      path="/"
+      element={
+        <Suspense fallback={<Loader />}>
+          <App />
+        </Suspense>
+      }
+    >
+      <Route
+        path="/login"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Login />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Register />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/favourite"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Favourites />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/cart"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Cart />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/shop"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Shop />
+          </Suspense>
+        }
+      />
+      <Route
+        path="/user-order"
+        element={
+          <Suspense fallback={<Loader />}>
+            <UserOrder />
+          </Suspense>
+        }
+      />
 
-      <Route path="/product/:id" element={<Suspense fallback={<div>Loading...</div>}><ProductDetails /></Suspense>} />
-      <Route index={true} path="/" element={<Suspense fallback={<div>Loading...</div>}><Home /></Suspense>} />
+      <Route
+        path="/product/:id"
+        element={
+          <Suspense fallback={<Loader />}>
+            <ProductDetails />
+          </Suspense>
+        }
+      />
+      <Route
+        index={true}
+        path="/"
+        element={
+          <Suspense fallback={<Loader />}>
+            <Home />
+          </Suspense>
+        }
+      />
 
-      <Route path="" element={<Suspense fallback={<div>Loading...</div>}><PrivateRoute /></Suspense>}>
-        <Route path="/profile" element={<Suspense fallback={<div>Loading...</div>}><Profile /></Suspense>} />
-        <Route path="/gptsearch" element={<Suspense fallback={<div>Loading...</div>}><GptPage /></Suspense>} />
-        <Route path="/shipping" element={<Suspense fallback={<div>Loading...</div>}><Shipping /></Suspense>} />
-        <Route path="/placeorder" element={<Suspense fallback={<div>Loading...</div>}><PlaceOrder /></Suspense>} />
-        <Route path="/order/:id" element={<Suspense fallback={<div>Loading...</div>}><Order /></Suspense>} />
+      <Route
+        path=""
+        element={
+          <Suspense fallback={<Loader />}>
+            <PrivateRoute />
+          </Suspense>
+        }
+      >
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Profile />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/gptsearch"
+          element={
+            <Suspense fallback={<Loader />}>
+              <GptPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/shipping"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Shipping />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/placeorder"
+          element={
+            <Suspense fallback={<Loader />}>
+              <PlaceOrder />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/order/:id"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Order />
+            </Suspense>
+          }
+        />
       </Route>
 
       {/* Admin routes 👇🏻 */}
-      <Route path="/admin" element={<Suspense fallback={<div>Loading...</div>}><AdminRoute /></Suspense>}>
-        <Route path="userlist" element={<Suspense fallback={<div>Loading...</div>}><UserList /></Suspense>} />
-        <Route path="categorylist" element={<Suspense fallback={<div>Loading...</div>}><CategoryList /></Suspense>} />
-        <Route path="allproductslist" element={<Suspense fallback={<div>Loading...</div>}><AllProducts /></Suspense>} />
-        <Route path="productlist/" element={<Suspense fallback={<div>Loading...</div>}><ProductList /></Suspense>} />
-        <Route path="dashboard" element={<Suspense fallback={<div>Loading...</div>}><AdminDashboard /></Suspense>} />
-        <Route path="product/update/:_id" element={<Suspense fallback={<div>Loading...</div>}><ProductUpdate /></Suspense>} />
-        <Route path="orderlist" element={<Suspense fallback={<div>Loading...</div>}><OrderList /></Suspense>} />
+      <Route
+        path="/admin"
+        element={
+          <Suspense fallback={<Loader />}>
+            <AdminRoute />
+          </Suspense>
+        }
+      >
+        <Route
+          path="userlist"
+          element={
+            <Suspense fallback={<Loader />}>
+              <UserList />
+            </Suspense>
+          }
+        />
+        <Route
+          path="categorylist"
+          element={
+            <Suspense fallback={<Loader />}>
+              <CategoryList />
+            </Suspense>
+          }
+        />
+        <Route
+          path="allproductslist"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AllProducts />
+            </Suspense>
+          }
+        />
+        <Route
+          path="productlist/"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProductList />
+            </Suspense>
+          }
+        />
+        <Route
+          path="dashboard"
+          element={
+            <Suspense fallback={<Loader />}>
+              <AdminDashboard />
+            </Suspense>
+          }
+        />
+        <Route
+          path="product/update/:_id"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProductUpdate />
+            </Suspense>
+          }
+        />
+        <Route
+          path="orderlist"
+          element={
+            <Suspense fallback={<Loader />}>
+              <OrderList />
+            </Suspense>
+          }
+        />
       </Route>
     </Route>
   )
