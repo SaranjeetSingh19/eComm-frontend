@@ -39,10 +39,12 @@ const Register = () => {
       try {
         const res = await register({ username, email, password }).unwrap();
         dispatch(setCredentials({ ...res }));
+        console.log(res);
         navigate(redirect);
         toast.success("User successfully registered 🥳");
       } catch (error) {
         console.log(error);
+        console.log(error?.data?.message);
         toast.error(error?.data?.message || "Something went wrong 3");
       }
     }

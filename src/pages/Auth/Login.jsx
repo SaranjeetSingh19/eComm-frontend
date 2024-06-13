@@ -39,7 +39,8 @@ const Login = () => {
       toast.success(`Welcome Back ${res.username} 😎`);
     } catch (error) {
     console.log(error);
-      toast.error(error?.data?.message || err.error || "Something went wrong 2");
+    console.log(error.error);
+      toast.error(error?.data?.message || error.error || "Something went wrong 2");
     }
   };
 
