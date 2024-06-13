@@ -28,15 +28,18 @@ const Login = () => {
     }
   }, [navigate, userInfo, redirect]);
 
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       const res = await login({ email, password }).unwrap();
+      console.log(res);
       dispatch(setCredentials({ ...res }));
+      navigate(redirect);
       toast.success(`Welcome Back ${res.username} 😎`);
     } catch (error) {
     console.log(error);
-      toast.error(error?.data?.message || "Something went wrong 2");
+      toast.error(error?.data?.message || err.error || "Something went wrong 2");
     }
   };
 
