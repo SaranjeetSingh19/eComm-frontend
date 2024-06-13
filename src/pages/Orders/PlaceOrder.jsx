@@ -13,6 +13,7 @@ import Message from "../../components/Message";
 const PlaceOrder = () => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+  console.log(cart);
 
   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
 
@@ -37,6 +38,7 @@ const PlaceOrder = () => {
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
+      console.log(res);
       console.log("chla 2");
       dispatch(clearCartItems());
       console.log("chla 3");

@@ -4,29 +4,27 @@ import { useDispatch } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { addToCart } from "../../redux/features/cart/cartSlice";
 import { FaPlus } from "react-icons/fa";
+import { toast } from "react-toastify";
 const ProductCard = ({ prod }) => {
   const dispatch = useDispatch();
 
   const addToCartHandler = (product, qty) => {
     dispatch(addToCart({ ...product, qty }));
-    toast.success("Item added successfully", {
-      position: toast.POSITION.TOP_RIGHT,
-      autoClose: 2000,
-    });
+    toast.success("Item added successfully");
   };
 
   function getRandomColor() {
     const colors = [
-      'bg-pink-100',
-      'bg-red-100',
-      'bg-yellow-100',
-      'bg-green-100',
-      'bg-blue-100',
-      'bg-indigo-100',
-      'bg-purple-100',
-      'bg-teal-100',
-      'bg-orange-100',
-      'bg-gray-100',
+      "bg-pink-100",
+      "bg-red-100",
+      "bg-yellow-100",
+      "bg-green-100",
+      "bg-blue-100",
+      "bg-indigo-100",
+      "bg-purple-100",
+      "bg-teal-100",
+      "bg-orange-100",
+      "bg-gray-100",
       "bg-teal-200",
     ];
     const randomIndex = Math.floor(Math.random() * colors.length);
@@ -34,15 +32,16 @@ const ProductCard = ({ prod }) => {
   }
 
   const randomColor = getRandomColor();
-  
 
   return (
-    <div className={`max-w-sm relative ${randomColor}   w-[16rem] rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700`}>
+    <div
+      className={`max-w-sm relative ${randomColor}   w-[16rem] rounded-lg shaodw dark:bg-gray-800 dark:border-gray-700`}
+    >
       <section className="relative">
         <Link to={`/product/${prod._id}`}>
           <span className="absolute bottom-3 right-3 bg-blue-100 text-black text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full ">
             {prod?.brand}
-          </span> 
+          </span>
           <img
             className="cursor-pointer w-full hover:rounded-md"
             src={prod?.image}
@@ -62,7 +61,7 @@ const ProductCard = ({ prod }) => {
               style: "currency",
               currency: "INR",
             })}
-          </p>  
+          </p>
         </div>
         <p className="mb-3 font-normal text-sm text-zinc-600">
           {prod?.description?.substring(0, 50)}...
@@ -98,8 +97,7 @@ const ProductCard = ({ prod }) => {
             onClick={() => addToCartHandler(prod, 1)}
             className="p-2 rounded-full text-white bg-white "
           >
-            <FaPlus  className="text-black"/>
-             
+            <FaPlus className="text-black" />
           </button>
         </section>
       </div>

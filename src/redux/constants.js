@@ -1,4 +1,4 @@
-export const BASE_URL = "https://ecomm-backend-4l7o.onrender.com";
+export const BASE_URL = "";
 export const USERS_URL = "/api/users";
 export const CATEGORY_URL = "/api/category";
 export const PRODUCT_URL = "/api/products";
