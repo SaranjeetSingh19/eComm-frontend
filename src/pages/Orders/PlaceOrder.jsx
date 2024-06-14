@@ -13,6 +13,9 @@ import Message from "../../components/Message";
 const PlaceOrder = () => {
   const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
+
+  const { userInfo } = useSelector((state) => state.auth);
+
   console.log(cart);
 
   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
@@ -34,13 +37,13 @@ const PlaceOrder = () => {
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         itemsPrice: cart.itemsPrice,
-        shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
+        shippingPrice: cart.shippingPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
-      console.log(res);
       console.log("chla 2");
       dispatch(clearCartItems());
+      console.log(res);
       console.log("chla 3");
       navigate(`/order/${res._id}`);
     } catch (error) {

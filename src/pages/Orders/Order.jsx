@@ -20,7 +20,6 @@ const Order = () => {
   const { cartItems } = cart;
 
   const [isPaid, setIsPaid] = useState(false);
-  const [isPending, setIsPending] = useState(false);
 
   const {
     data: order,
@@ -39,13 +38,13 @@ const Order = () => {
     useDeliverOrderMutation();
   const { userInfo } = useSelector((state) => state.auth);
 
-  // const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
-  // const {
-  //   data: paypal,
-  //   isLoading: loadingPayPal,
-  //   error: errorPayPal,
-  // } = useGetPaypalClientIdQuery();
+  const {
+    data: paypal,
+    isLoading: loadingPayPal,
+    error: errorPayPal,
+  } = useGetPaypalClientIdQuery();
 
   const handleMockPayment = async () => {
     try {
@@ -87,26 +86,26 @@ const Order = () => {
     toast.error(err?.message || "Payment failed");
   }
 
-  // useEffect(() => {
-  //   if (!errorPayPal && !loadingPayPal && paypal.clientId) {
-  //     const loadingPayPalScript = async () => {
-  //       paypalDispatch({
-  //         type: "resetOptions",
-  //         value: {
-  //           clientId: paypal.clientId,
-  //           currency: "INR",
-  //         },
-  //       });
-  //       paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-  //     };
+  useEffect(() => {
+    if (!errorPayPal && !loadingPayPal && paypal.clientId) {
+      const loadingPayPalScript = async () => {
+        paypalDispatch({
+          type: "resetOptions",
+          value: {
+            clientId: paypal.clientId,
+            currency: "INR",
+          },
+        });
+        paypalDispatch({ type: "setLoadingStatus", value: "pending" });
+      };
 
-  //     if (order && !order.isPaid) {
-  //       if (!window.paypal) {
-  //         loadingPayPalScript();
-  //       }
-  //     }
-  //   }
-  // }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
+      if (order && !order.isPaid) {
+        if (!window.paypal) {
+          loadingPayPalScript();
+        }
+      }
+    }
+  }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
 
   useEffect(() => {
     if (order) {
@@ -245,6 +244,18 @@ const Order = () => {
                 </div>
               </div>
             )}
+          </div>
+        )}
+         {loadingDeliver && <Loader />}
+        {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+          <div>
+            <button
+              type="button"
+              className="bg-pink-500 text-white w-full py-2"
+              onClick={deliverHandler}
+            >
+              Mark As Delivered
+            </button>
           </div>
         )}
       </div>
