@@ -10,7 +10,7 @@ lerna-debug.log*
 # Ignore the .env file
 node_modules
 .env
-
+.env.production
 dist
 dist-ssr
 *.local

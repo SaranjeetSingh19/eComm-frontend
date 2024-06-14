@@ -63,6 +63,7 @@ const OrderList = lazy(() => import("./pages/Admin/OrderList.jsx"));
 const Order = lazy(() => import("./pages/Orders/Order.jsx"));
 const UserOrder = lazy(() => import("./pages/Orders/UserOrder.jsx"));
 import Loader from "./components/Loader.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -87,6 +88,14 @@ const router = createBrowserRouter(
         element={
           <Suspense fallback={<Loader />}>
             <Register />
+          </Suspense>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={<Loader />}>
+            <NotFound />
           </Suspense>
         }
       />

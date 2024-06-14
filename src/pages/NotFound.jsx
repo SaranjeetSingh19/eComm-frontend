@@ -1,0 +1,11 @@
+
+const NotFound = () => {
+  return (
+    <div className='flex text-xl mt-20 text-red-500 items-center flex-col'>
+      <h1>404 - Page Not Found</h1>
+      <p>Sorry, the page you are looking for does not exist.</p>
+    </div>
+  );
+};
+
+export default NotFound;

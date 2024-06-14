@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import ProgressSteps from "../../components/ProgressSteps";
-import { useCreateOrderMutation } from "../../redux/api/orderApiSlice";
 import { clearCartItems } from "../../redux/features/cart/cartSlice";
+import { useCreateOrderMutation } from "../../redux/api/orderApiSlice";
 
 const PlaceOrder = () => {
   const navigate = useNavigate();
