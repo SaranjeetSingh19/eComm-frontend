@@ -33,9 +33,9 @@ const Order = () => {
   const [mockPayOrder, { isLoading: loadingMockPay }] =
     useMockPayOrderMutation();
 
-
   const [deliverOrder, { isLoading: loadingDeliver }] =
     useDeliverOrderMutation();
+
   const { userInfo } = useSelector((state) => state.auth);
 
   const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
@@ -45,6 +45,30 @@ const Order = () => {
     isLoading: loadingPayPal,
     error: errorPayPal,
   } = useGetPaypalClientIdQuery();
+
+
+  useEffect(() => {
+    if (!errorPayPal && !loadingPayPal && paypal.clientId) {
+      const loadingPayPalScript = async () => {
+        paypalDispatch({
+          type: "resetOptions",
+          value: {
+            "client-id": paypal.clientId,
+            currency: "USD",
+          },
+        });
+        paypalDispatch({ type: "setLoadingStatus", value: "pending" });
+      };
+
+      if (order && !order.isPaid) {
+        if (!window.paypal) {
+          loadingPayPalScript();
+        }
+      }
+    }
+  }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
+
+
 
   const handleMockPayment = async () => {
     try {
@@ -59,14 +83,13 @@ const Order = () => {
   };
 
   function onApprove(data, actions) {
-    return actions?.order?.capture().then(async function (details) {
+    return actions.order.capture().then(async function (details) {
       try {
         await payOrder({ orderId, details });
         refetch();
         toast.success("Order is paid");
       } catch (error) {
-    console.log(error);
-
+        console.log(error);
         toast.error(error?.data?.message || error?.message);
       }
     });
@@ -86,26 +109,10 @@ const Order = () => {
     toast.error(err?.message || "Payment failed");
   }
 
-  useEffect(() => {
-    if (!errorPayPal && !loadingPayPal && paypal.clientId) {
-      const loadingPayPalScript = async () => {
-        paypalDispatch({
-          type: "resetOptions",
-          value: {
-            clientId: paypal.clientId,
-            currency: "INR",
-          },
-        });
-        paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-      };
-
-      if (order && !order.isPaid) {
-        if (!window.paypal) {
-          loadingPayPalScript();
-        }
-      }
-    }
-  }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
+  const deliverHandler = async () => {
+    await deliverOrder(orderId);
+    refetch();
+  };
 
   useEffect(() => {
     if (order) {

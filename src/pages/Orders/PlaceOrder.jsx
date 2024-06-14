@@ -1,14 +1,13 @@
-import { useNavigate } from "react-router";
-import Loader from "../../components/Loader";
-import { useCreateOrderMutation } from "../../redux/api/orderApiSlice";
-import { clearCartItems } from "../../redux/features/cart/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import ProgressSteps from "../../components/ProgressSteps";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import Loader from "../../components/Loader";
 import Message from "../../components/Message";
+import ProgressSteps from "../../components/ProgressSteps";
+import { useCreateOrderMutation } from "../../redux/api/orderApiSlice";
+import { clearCartItems } from "../../redux/features/cart/cartSlice";
 
 const PlaceOrder = () => {
   const navigate = useNavigate();
