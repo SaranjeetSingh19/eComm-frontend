@@ -29,7 +29,7 @@ export const orderApiSlice = apiSlice.injectEndpoints({
     mockPayOrder: builder.mutation({
       query: (orderId) => ({
         url: `${ORDERS_URL}/mock-payment/${orderId}`,
-        method: 'PUT',
+        method: "PUT",
       }),
     }),
 
@@ -73,6 +73,22 @@ export const orderApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
+// const orderApiSlice = createApi({
+//   reducerPath: "orderApiSlice",
+//   baseQuery: fetchBaseQuery({ baseUrl: `y/api/orders` }),
+//   tagTypes: ["Product", "Order", "User", "Category"],
+//   endpoints: (builder) => ({
+//         createOrder: builder.mutation({
+//       query: (order) => ({
+//         url: "/home",
+//         method: "POST",
+//         body: order,
+//       }),
+//     }),
+//   })
+// })
+
+export default orderApiSlice;
 export const {
   useCreateOrderMutation,
   useGetOrderDetailsQuery,
@@ -83,5 +99,6 @@ export const {
   useGetTotalOrdersQuery,
   useGetTotalSalesQuery,
   useGetTotalSalesByDateQuery,
-  useGetOrdersQuery, useMockPayOrderMutation
+  useGetOrdersQuery,
+  useMockPayOrderMutation,
 } = orderApiSlice;

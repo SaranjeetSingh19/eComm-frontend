@@ -15,9 +15,10 @@ const PlaceOrder = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  console.log(cart);
+  // console.log(cart);
 
   const [createOrder, { isLoading, error }] = useCreateOrderMutation();
+ 
 
   useEffect(() => {
     if (!cart.shippingAddress.address) {
