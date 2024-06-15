@@ -34,7 +34,7 @@ import store from "./redux/store.js";
 // import Order from "./pages/Orders/Order.jsx";
 // import UserOrder from "./pages/Orders/UserOrder.jsx";
 
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+// import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 const App = lazy(() => import("./App.jsx"));
 const PrivateRoute = lazy(() => import("./components/PrivateRoute.jsx"));
@@ -272,9 +272,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <PayPalScriptProvider>
+      {/* <PayPalScriptProvider> */}
         <RouterProvider router={router} />
-      </PayPalScriptProvider>
+      {/* </PayPalScriptProvider> */}
     </Provider>
   </React.StrictMode>
 );

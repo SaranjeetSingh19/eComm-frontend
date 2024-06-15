@@ -1,4 +1,4 @@
-import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -20,6 +20,7 @@ const Order = () => {
   const { cartItems } = cart;
 
   const [isPaid, setIsPaid] = useState(false);
+  const [isPending, setIsPending] = useState(false);
 
   const {
     data: order,
@@ -38,35 +39,35 @@ const Order = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
+  // const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
-  const {
-    data: paypal,
-    isLoading: loadingPayPal,
-    error: errorPayPal,
-  } = useGetPaypalClientIdQuery();
+  // const {
+  //   data: paypal,
+  //   isLoading: loadingPayPal,
+  //   error: errorPayPal,
+  // } = useGetPaypalClientIdQuery();
 
 
-  useEffect(() => {
-    if (!errorPayPal && !loadingPayPal && paypal.clientId) {
-      const loadingPayPalScript = async () => {
-        paypalDispatch({
-          type: "resetOptions",
-          value: {
-            "client-id": paypal.clientId,
-            currency: "USD",
-          },
-        });
-        paypalDispatch({ type: "setLoadingStatus", value: "pending" });
-      };
+  // useEffect(() => {
+  //   if (!errorPayPal && !loadingPayPal && paypal.clientId) {
+  //     const loadingPayPalScript = async () => {
+  //       paypalDispatch({
+  //         type: "resetOptions",
+  //         value: {
+  //           "client-id": paypal.clientId,
+  //           currency: "USD",
+  //         },
+  //       });
+  //       paypalDispatch({ type: "setLoadingStatus", value: "pending" });
+  //     };
 
-      if (order && !order.isPaid) {
-        if (!window.paypal) {
-          loadingPayPalScript();
-        }
-      }
-    }
-  }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
+  //     if (order && !order.isPaid) {
+  //       if (!window.paypal) {
+  //         loadingPayPalScript();
+  //       }
+  //     }
+  //   }
+  // }, [errorPayPal, loadingPayPal, order, paypal, paypalDispatch]);
 
 
 
