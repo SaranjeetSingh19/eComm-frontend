@@ -30,6 +30,7 @@ import "./index.css";
 import Loader from "./components/Loader.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import store from "./redux/store.js";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 // import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
 // import OrderList from "./pages/Admin/OrderList.jsx";
@@ -272,9 +273,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      {/* <PayPalScriptProvider> */}
+      <PayPalScriptProvider>
         <RouterProvider router={router} />
-      {/* </PayPalScriptProvider> */}
+      </PayPalScriptProvider>
     </Provider>
   </React.StrictMode>
 );

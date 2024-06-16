@@ -1,4 +1,4 @@
-// import { PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -8,7 +8,7 @@ import Message from "../../components/Message";
 import {
   useDeliverOrderMutation,
   useGetOrderDetailsQuery,
-  useGetPaypalClientIdQuery,
+  // useGetPaypalClientIdQuery,
   useMockPayOrderMutation,
   usePayOrderMutation,
 } from "../../redux/api/orderApiSlice";
@@ -243,13 +243,13 @@ const Order = () => {
               <Loader />
             ) : (
               <div>
-                {/* <div>
+                { <div>
                   <PayPalButtons
-                    createOrder={createOrder}
-                    onApprove={onApprove}
-                    onError={onError}
+                    // createOrder={createOrder}
+                    // onApprove={onApprove}
+                    // onError={onError}
                   ></PayPalButtons>
-                </div> */}
+                </div> }
               </div>
             )}
           </div>
