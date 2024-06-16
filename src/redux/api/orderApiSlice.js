@@ -33,11 +33,11 @@ export const orderApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    getPaypalClientId: builder.query({
-      query: () => ({
-        url: PAYPAL_URL,
-      }),
-    }),
+    // getPaypalClientId: builder.query({
+    //   query: () => ({
+    //     url: PAYPAL_URL,
+    //   }),
+    // }),
 
     getMyOrder: builder.query({
       query: () => ({

@@ -27,6 +27,8 @@ import "./index.css";
 // import ProductDetails from "./pages/Products/ProductDetails.jsx";
 // import Shop from "./pages/Shop.jsx";
 // import Profile from "./pages/User/Profile.jsx";
+import Loader from "./components/Loader.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import store from "./redux/store.js";
 
 // import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
@@ -62,8 +64,6 @@ const AdminDashboard = lazy(() => import("./pages/Admin/AdminDashboard.jsx"));
 const OrderList = lazy(() => import("./pages/Admin/OrderList.jsx"));
 const Order = lazy(() => import("./pages/Orders/Order.jsx"));
 const UserOrder = lazy(() => import("./pages/Orders/UserOrder.jsx"));
-import Loader from "./components/Loader.jsx";
-import NotFound from "./pages/NotFound.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

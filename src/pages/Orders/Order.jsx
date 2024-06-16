@@ -1,4 +1,4 @@
-import { PayPalButtons } from "@paypal/react-paypal-js";
+// import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
@@ -83,32 +83,32 @@ const Order = () => {
     }
   };
 
-  function onApprove(data, actions) {
-    return actions.order.capture().then(async function (details) {
-      try {
-        await payOrder({ orderId, details });
-        refetch();
-        toast.success("Order is paid");
-      } catch (error) {
-        console.log(error);
-        toast.error(error?.data?.message || error?.message);
-      }
-    });
-  }
+  // function onApprove(data, actions) {
+  //   return actions.order.capture().then(async function (details) {
+  //     try {
+  //       await payOrder({ orderId, details });
+  //       refetch();
+  //       toast.success("Order is paid");
+  //     } catch (error) {
+  //       console.log(error);
+  //       toast.error(error?.data?.message || error?.message);
+  //     }
+  //   });
+  // }
 
-  function createOrder(data, actions) {
-    return actions.order
-      .create({
-        purchase_units: [{ amount: { value: order.totalPrice } }],
-      })
-      .then((orderId) => {
-        return orderId;
-      });
-  }
+  // function createOrder(data, actions) {
+  //   return actions.order
+  //     .create({
+  //       purchase_units: [{ amount: { value: order.totalPrice } }],
+  //     })
+  //     .then((orderId) => {
+  //       return orderId;
+  //     });
+  // }
 
-  function onError(err) {
-    toast.error(err?.message || "Payment failed");
-  }
+  // function onError(err) {
+  //   toast.error(err?.message || "Payment failed");
+  // }
 
   const deliverHandler = async () => {
     await deliverOrder(orderId);
@@ -243,13 +243,13 @@ const Order = () => {
               <Loader />
             ) : (
               <div>
-                <div>
+                {/* <div>
                   <PayPalButtons
                     createOrder={createOrder}
                     onApprove={onApprove}
                     onError={onError}
                   ></PayPalButtons>
-                </div>
+                </div> */}
               </div>
             )}
           </div>
